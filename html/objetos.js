@@ -6,7 +6,7 @@ function Producto(){
     this.categoria=categoria;
     this.foto=foto;
 }
-function Usuario(){
+function Usuario(nif,contrasena,nombre,correo,direccion,foto){
     this.nif=nif;
     this.contrasena=contrasena;
     this.nombre=nombre;
@@ -18,10 +18,15 @@ function Usuario(){
 function crearUsuario(nif,contrasena,nombre,correo,direccion,foto){
     let persona= new Usuario(nif,contrasena,nombre,correo,direccion,foto);
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "registro.php",
         data: "datos=" + JSON.stringify(persona),
-        success: alert("Usuario enviado"),
-        error : alert("Error al enviar el usuario"),
+        success: function(){
+            alert("Usuario enviado")
+        },
+        error : function(){
+            alert("Error al enviar el usuario")
+        }
     });
+    /* $.post('registro.php',{})*/
 }
