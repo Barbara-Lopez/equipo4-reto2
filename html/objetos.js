@@ -20,7 +20,8 @@ function crearUsuario(nif,contrasena,nombre,correo,direccion,foto){
     $.ajax({
         type: "GET",
         url: "registro.php",
-        data: "datos=" + persona,
-        success= alert("Usuario enviado"),
+        data: "datos=" + JSON.stringify(persona),
+        success: alert("Usuario enviado"),
+        error : alert("Error al enviar el usuario"),
     });
 }
