@@ -4,29 +4,37 @@ $(document).ready(
             $('#enviar').click(function(event){
                 
                 if($('form').attr('id')=="formUsuario"){
-                    boton="usuario";
+                    formulrio="usuario";
                 }else{
-                    boton="producto"
+                    formulrio="producto";
                 }                 
                 
-                verificarDatos(boton);
+                verificarDatos(formulrio);
+            });
+            $('#enviarCategoria').click(function(){
+                guardarCategoria();
+               
             });
         
 });
 
-function verificarDatos(boton){
+function verificarDatos(formulrio){
     
-    if(boton=="usuario"){
+    if(formulrio=="usuario"){
         nif=verificarNif();
         contrasena=verificarContrasena();
         nombre=verificarNombre();
         correo=verificarCorreoElectronico();
         direccion=verificarDireccion();
         foto=$('#foto').val();
+        crearUsuario(nif,contrasena,nombre,correo,direccion,foto);
     } else{
         nombre=verificarNombre();
-        descripcion=$('descripcion').val();
+        descripcion=verificarDescripcion();
         precio=verificarPrecio();
+        stock=$('#stock').val();
+        categoria=verificarCategoria();
+        foto=$('#foto').val();
     }
     
 }
@@ -39,7 +47,7 @@ function verificarNombre(){
         if(reg.test(nombre))
             return nombre;
         else
-            throw "Nombre mal escrito vuelva a escribirlo"
+            throw "Nombre esta mal escrito o vacio, vuelva a escribirlo"
         
     } catch (error) {
         alert(error)
@@ -120,3 +128,48 @@ function verificarPrecio(){
         alert(error)
     }
 }
+
+function verificarDescripcion(){
+    try {
+        descripcion=$('#descripcion').val();
+        if(descripcion==""){
+            throw "La descripción no se puede dejar vacía";
+            
+        }else{
+            return descripcion;
+        }
+            
+           
+        
+    } catch (error) {
+        alert(error)
+    }
+}  
+
+function verificarCategoria(){
+    try {
+        categoria=$('.categoria').val();
+        if(categoria==""){
+            throw "No esta metido en ninguna categoria"
+        }else{
+            categorias=categoria.split(',');
+            return categorias;
+        }        
+    } catch (error) {
+        alert(error)
+    }
+}
+function guardarCategoria(){
+    
+    let categoria =$("#categoria option:selected").val();
+
+    let hidden=$('.categoria');
+        if(hidden.val()=="")
+             hidden.val(categoria);
+        else
+            hidden.val(hidden.val()+","+categoria);  
+            
+        alert(hidden.val());
+}
+
+
