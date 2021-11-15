@@ -8,6 +8,7 @@
         <script src="../js/objetos.js"></script>
         <script src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/verificarFormularios.js"></script>
+        <link rel="stylesheet" href="../css/formularios.css">
     </head>
     <body>
         <?php
@@ -30,10 +31,10 @@
                 <input type="text" name="usuario" id="nombre" placeholder="nombre">
                 
                 <label for="correo">Correo electronico</label>
-                <input type="text" name="usuario" id="correo" placeholder="Ejemplo: pepe@gmail.com">
+                <input type="text" name="usuario" id="correo" placeholder=" pepe@gmail.com">
                 
                 <label for="direccion">Direccion</label>
-                <input type="text" name="usuario" id="direccion" placeholder="Ejemplo: Vitoria-Gasteiz,Alava">
+                <input type="text" name="usuario" id="direccion" placeholder=" Vitoria,alava">
                 
                 <label for="foto">Foto</label>
                 <input type="file" name="usuario" id="foto" accept="image/png,image/jpeg,image/jpg">

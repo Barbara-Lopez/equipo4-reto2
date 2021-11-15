@@ -8,11 +8,13 @@
         <script src="../js/objetos.js"></script>
         <script src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/verificarFormularios.js"></script>
+        <link rel="stylesheet" href="../css/formularios.css">
     </head>
     <body>
-        <?php
+        <h1><?php
             require "enviarBaseDatos.php";
-        ?>
+        ?></h1>
+        
         <form action="productos.php" method="post" id="formProducto" enctype="multipart/form-data">
             <fieldset>
                 <legend>Subir producto</legend>

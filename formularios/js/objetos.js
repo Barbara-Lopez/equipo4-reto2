@@ -16,26 +16,34 @@ function Usuario(nif,contrasena,nombre,correo,direccion,foto){
 }
 
 function crearUsuario(nif,contrasena,nombre,correo,direccion,foto){
-    let persona= new Usuario(nif,contrasena,nombre,correo,direccion,foto);
+    let user= new Usuario(nif,contrasena,nombre,correo,direccion,foto);
+    let persona= {
+        "nif" : user.nif,
+        "contrasena" : user.contrasena,
+        "nombre" : user.nombre,
+        "correo" : user.correo,
+        "direccion" : user.direccion,
+        "foto" : user.foto,
+        "formulario" : "usuario"
+    };
+    
     $.ajax({
         type: "POST",
-        url: "registro.php",
-        data: "datos=" + JSON.stringify(persona)+"&formulario=usuario",
-        success: function(){
-            alert("Usuario enviado")
-        },
-        error : function(){
-            alert("Error al enviar el usuario")
-        }
-    });
+        url: "enviarBaseDatos.php",
+        data: persona,
+       
+    })
+    .done(function(callback){
+        alert(callback);
+    })
 }
 
 function crearProducto(nombre,descripcion,precio,stock,categoria,foto){
     let producto= new Producto(nombre,descripcion,precio,stock,categoria,foto);
     $.ajax({
         type: "POST",
-        url: "productos.php",
-        data: "datos=" + JSON.stringify(producto)+"&formulario=producto",
+        url: "productos.php?formulario=producto",
+        data: JSON.stringify(producto),
         success: function(){
             alert("Producto enviado")
         },
