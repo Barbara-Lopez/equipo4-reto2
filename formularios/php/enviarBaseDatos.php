@@ -45,12 +45,11 @@ function crearProducto(){
         'nombre'=>$_POST["nombre"],
         'descripcion'=> $_POST["descripcion"],
         'precio'=>$_POST["precio"],
-        'stock'=>$_POST["stock"],
-        'categoria'=>$_POST["categoria"]
+        'stock'=>$_POST["stock"]
     );
         
     $dbh=connect();
-    $stmt= $dbh->prepare("INSERT INTO producto (,,,,) VALUES (:nombre,:descripcion,:precio,:stock,:categoria)");
+    $stmt= $dbh->prepare("INSERT INTO producto (titulo,desc,precio,stock) VALUES (:nombre,:descripcion,:precio,:stock)");
     $stmt->execute($datos);
     $dbh=close();
     
