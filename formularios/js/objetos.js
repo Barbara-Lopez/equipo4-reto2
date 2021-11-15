@@ -1,5 +1,5 @@
-function Producto(){
-    this.nombre=monbnombre;
+function Producto(nombre,descripcion,precio,stock,categoria,foto){
+    this.nombre=nombre;
     this.descripcion=descripcion;
     this.precio=precio;
     this.stock=stock;
@@ -20,7 +20,7 @@ function crearUsuario(nif,contrasena,nombre,correo,direccion,foto){
     $.ajax({
         type: "POST",
         url: "registro.php",
-        data: "datos=" + JSON.stringify(persona),
+        data: "datos=" + JSON.stringify(persona)+"&formulario=usuario",
         success: function(){
             alert("Usuario enviado")
         },
@@ -28,5 +28,19 @@ function crearUsuario(nif,contrasena,nombre,correo,direccion,foto){
             alert("Error al enviar el usuario")
         }
     });
-    /* $.post('registro.php',{})*/
+}
+
+function crearProducto(nombre,descripcion,precio,stock,categoria,foto){
+    let producto= new Producto(nombre,descripcion,precio,stock,categoria,foto);
+    $.ajax({
+        type: "POST",
+        url: "productos.php",
+        data: "datos=" + JSON.stringify(producto)+"&formulario=producto",
+        success: function(){
+            alert("Producto enviado")
+        },
+        error : function(){
+            alert("Error al enviar el producto")
+        }
+    });
 }
