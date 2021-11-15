@@ -18,6 +18,8 @@ function close(){
     $formulario=$_POST["formulario"];
     if($formulario=="usuario"){
         crearUsuario();
+    }else{
+        crearProducto();
     }
 
 
@@ -33,6 +35,22 @@ function crearUsuario(){
         
     $dbh=connect();
     $stmt= $dbh->prepare("INSERT INTO usuario (nombreusu,contrasenausu,nombre,gmail,tlfno,direccion) VALUES (:nif,:contrasena,:nombre,:correo,:telefono,:direccion)");
+    $stmt->execute($datos);
+    $dbh=close();
+    
+}
+
+function crearProducto(){
+    $datos= array(
+        'nombre'=>$_POST["nombre"],
+        'descripcion'=> $_POST["descripcion"],
+        'precio'=>$_POST["precio"],
+        'stock'=>$_POST["stock"],
+        'categoria'=>$_POST["categoria"]
+    );
+        
+    $dbh=connect();
+    $stmt= $dbh->prepare("INSERT INTO producto (,,,,) VALUES (:nombre,:descripcion,:precio,:stock,:categoria)");
     $stmt->execute($datos);
     $dbh=close();
     

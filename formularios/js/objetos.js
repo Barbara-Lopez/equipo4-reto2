@@ -41,16 +41,22 @@ function crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
 }
 
 function crearProducto(nombre,descripcion,precio,stock,categoria,foto){
-    let producto= new Producto(nombre,descripcion,precio,stock,categoria,foto);
+    let p= new Producto(nombre,descripcion,precio,stock,categoria,foto);
+    let producto= {
+        "nombre" : p.nombre,
+        "descripcion" : p.descripcion,
+        "precio" : p.precio,
+        "stock" : p.stock,
+        "categoria" : p.categoria,
+        "foto" : p.foto,
+        "formulario" : "producto"
+    };
     $.ajax({
         type: "POST",
         url: "productos.php?formulario=producto",
-        data: JSON.stringify(producto),
-        success: function(){
-            alert("Producto enviado")
-        },
-        error : function(){
-            alert("Error al enviar el producto")
-        }
-    });
+        data: producto,
+    })
+    .done(function(){
+        alert("Enviado correctamente");
+    })
 }
