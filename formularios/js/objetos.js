@@ -6,22 +6,24 @@ function Producto(nombre,descripcion,precio,stock,categoria,foto){
     this.categoria=categoria;
     this.foto=foto;
 }
-function Usuario(nif,contrasena,nombre,correo,direccion,foto){
+function Usuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
     this.nif=nif;
     this.contrasena=contrasena;
     this.nombre=nombre;
     this.correo=correo;
+    this.telefono=telefono;
     this.direccion=direccion;
     this.foto=foto;
 }
 
-function crearUsuario(nif,contrasena,nombre,correo,direccion,foto){
-    let user= new Usuario(nif,contrasena,nombre,correo,direccion,foto);
+function crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
+    let user= new Usuario(nif,contrasena,nombre,correo,telefono,direccion,foto);
     let persona= {
         "nif" : user.nif,
         "contrasena" : user.contrasena,
         "nombre" : user.nombre,
         "correo" : user.correo,
+        "telefono" : user.telefono,
         "direccion" : user.direccion,
         "foto" : user.foto,
         "formulario" : "usuario"
@@ -33,8 +35,8 @@ function crearUsuario(nif,contrasena,nombre,correo,direccion,foto){
         data: persona,
        
     })
-    .done(function(callback){
-        alert(callback);
+    .done(function(){
+        alert("Enviado correctamente");
     })
 }
 

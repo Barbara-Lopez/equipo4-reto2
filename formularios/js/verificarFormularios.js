@@ -25,9 +25,10 @@ function verificarDatos(formulrio){
         contrasena=verificarContrasena();
         nombre=verificarNombre();
         correo=verificarCorreoElectronico();
+        telefono=verificarTelefono();
         direccion=verificarDireccion();
         foto=$('#foto').val();
-        crearUsuario(nif,contrasena,nombre,correo,direccion,foto);
+        crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto);
     } else{
         nombre=verificarNombre();
         descripcion=verificarDescripcion();
@@ -98,6 +99,22 @@ function verificarCorreoElectronico(){
     } catch (error) {
         alert(error)
     }
+}
+
+function verificarTelefono(){
+    try {
+        telefono=$('#tel').val();
+        reg=new RegExp("^[0-9]{9}$");
+
+        if(reg.test(telefono))
+            return telefono;
+        else
+            throw "Telefono mal escrito vuelva a escribirlo";
+        
+    } catch (error) {
+        alert(error)
+    }
+    
 }
 
 function verificarDireccion(){
