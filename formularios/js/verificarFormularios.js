@@ -2,18 +2,15 @@
 $(document).ready(
     function (){
             $('#enviar').click(function(event){
-                
                 if($('form').attr('id')=="formUsuario"){
                     formulrio="usuario";
                 }else{
                     formulrio="producto";
                 }                 
-                
                 verificarDatos(formulrio);
             });
             $('#enviarCategoria').click(function(){
                 guardarCategoria();
-               
             });
         
 });
@@ -71,7 +68,6 @@ function verificarNombre(){
         else
             throw "nombre2"
     }
-   
 }
 
 function verificarContrasena(){
