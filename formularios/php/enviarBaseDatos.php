@@ -49,7 +49,7 @@ function crearProducto(){
     );
         
     $dbh=connect();
-    $stmt= $dbh->prepare("INSERT INTO producto (titulo,desc,precio,stock) VALUES (:nombre,:descripcion,:precio,:stock)");
+    $stmt= $dbh->prepare("INSERT INTO producto (titulo,descripcion,precio,stock) VALUES (:nombre,:descripcion,:precio,:stock)");
     $stmt->execute($datos);
     $dbh=close();
     

@@ -9,6 +9,7 @@
         <script src="../js/objetos.js"></script>
         <script src="../js/verificarFormularios.js"></script>
         <link rel="stylesheet" href="../css/formularios.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
     </head>
     <body>
         <?php
@@ -42,7 +43,7 @@
                 <label for="foto">Foto</label>
                 <input type="file"  id="foto" accept="image/png,image/jpeg,image/jpg">
                 
-                <input type="submit" value="Enviar" id="enviar">
+                <input type="button" value="Enviar" id="enviar">
             </fieldset>
         </form>
         

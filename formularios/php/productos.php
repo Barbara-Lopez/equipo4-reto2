@@ -9,6 +9,7 @@
         <script src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/verificarFormularios.js"></script>
         <link rel="stylesheet" href="../css/formularios.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
     </head>
     <body>
         <h1><?php

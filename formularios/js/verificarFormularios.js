@@ -19,164 +19,155 @@ $(document).ready(
 });
 
 function verificarDatos(formulrio){
-    
-    if(formulrio=="usuario"){
-        nif=verificarNif();
-        contrasena=verificarContrasena();
-        nombre=verificarNombre();
-        correo=verificarCorreoElectronico();
-        telefono=verificarTelefono();
-        direccion=verificarDireccion();
-        foto=$('#foto').val();
-        crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto);
-    } else{
-        nombre=verificarNombre();
-        descripcion=verificarDescripcion();
-        precio=verificarPrecio();
-        stock=$('#stock').val();
-        categoria=verificarCategoria();
-        foto=$('#foto').val();
-        crearProducto(nombre,descripcion,precio,stock,categoria,foto);
+    try {
+        if(formulrio=="usuario"){
+            nif=verificarNif();
+            contrasena=verificarContrasena();
+            nombre=verificarNombre();
+            correo=verificarCorreoElectronico();
+            telefono=verificarTelefono();
+            direccion=verificarDireccion();
+            foto=$('#foto').val();
+            crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto);
+        } else{
+            nombre=verificarNombre();
+            descripcion=verificarDescripcion();
+            precio=verificarPrecio();
+            stock=$('#stock').val();
+            categoria=verificarCategoria();
+            foto=$('#foto').val();
+            date=new Date (2000,02,22);      
+            console.log(date);
+            crearProducto(nombre,descripcion,precio,stock,categoria,foto);
+        }
+    } catch (error) {
+        errores(error);
+     
+        
     }
-    
 }
 
 function verificarNombre(){
-    try {
-        nombre=$('#nombre').val();
-        reg=new RegExp("^[0-9a-zA-Z]*$");
+    nombre=$('#nombre').val();
+    reg=new RegExp("^[0-9a-zA-Z]*$");
 
-        if(reg.test(nombre))
-            return nombre;
-        else
-            throw "Nombre esta mal escrito o vacio, vuelva a escribirlo"
-        
-    } catch (error) {
-        alert(error)
-    }
+    if(reg.test(nombre))
+        return nombre;
+    else
+        throw "Nombre esta mal escrito o vacio, vuelva a escribirlo"
 }
 
 function verificarContrasena(){
-    try {
-        c1=$('#contrasena1').val();
-        c2=$('#contrasena2').val();
-
+    c1=$('#contrasena1').val();
+    c2=$('#contrasena2').val();
+    if(c1=="" && c2==""){
+        throw "contrasena1"
+    }
+    else{
         if(c1==c2)
             return c1;
         else
-            throw "Las contraseñas son distintas vuelva a escribirlas"
-        
-    } catch (error) {
-        alert(error)
+            throw "contrasena2"
     }
 }
 
 function verificarNif(){
-    try {
-        nif=$('#nif').val();
-        reg=new RegExp("^[0-9]{8}[A-Z]{1}$");
+    nif=$('#nif').val();
+    reg=new RegExp("^[0-9]{8}[A-Z]{1}$");
 
+    if(nif==""){
+        throw "nif1"
+    }
+    else{
         if(reg.test(nif))
             return nif;
         else
-            throw "Nif mal escrito vuelva a escribirlo";
-        
-    } catch (error) {
-        alert(error)
+            throw "nif2";
     }
 }
 
 function verificarCorreoElectronico(){
-    try {
-        correo=$('#correo').val();
-        reg=new RegExp("^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$");
+    correo=$('#correo').val();
+    reg=new RegExp("^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$");
 
+    if(correo==""){
+        throw "El correo esta vacio";
+    }
+    else{ 
         if(reg.test(correo))
             return correo;
         else
             throw "El correo esta mal escrito vuelva a escribirlo";
-        
-    } catch (error) {
-        alert(error)
     }
 }
 
 function verificarTelefono(){
-    try {
-        telefono=$('#tel').val();
-        reg=new RegExp("^[0-9]{9}$");
+    telefono=$('#tel').val();
+    reg=new RegExp("^[0-9]{9}$");
 
+    if(telefono==""){
+        throw "El telefono esta vacio";
+    }
+    else{    
         if(reg.test(telefono))
             return telefono;
         else
             throw "Telefono mal escrito vuelva a escribirlo";
-        
-    } catch (error) {
-        alert(error)
     }
     
 }
 
 function verificarDireccion(){
-    try {
-        direccion=$('#direccion').val();
-        reg=new RegExp("^[a-zA-Z]*,[a-zA-Z]*$");
+    direccion=$('#direccion').val();
+    reg=new RegExp("^[a-zA-Z]*,[a-zA-Z]*$");
 
+    if(direccion==""){
+        throw "La dirección esta vacia";
+    }
+    else{
         if(reg.test(direccion))
             return direccion;
         else
             throw "La dirección esta mal escrita vuelva a escribirlo";
-        
-    } catch (error) {
-        alert(error)
     }
 }
 
 function verificarPrecio(){
-    try {
-        precio=$('#precio').val();
-        reg=new RegExp("^[0-9]+([,][0-9]+)?$");
+    precio=$('#precio').val();
+    reg=new RegExp("^[0-9]+([,][0-9]+)?$");
 
-        if(reg.test(precio))
-            return precio;
-        else
-            throw "El precio esta mal escrito vuelva a escribirlo";
-        
-    } catch (error) {
-        alert(error)
+    if(precio==""){
+
     }
+    else{
+        if(reg.test(precio))
+        return precio;
+        else
+            throw "El precio esta mal escrito vuelva a escribirlo"; 
+    }    
 }
 
 function verificarDescripcion(){
-    try {
-        descripcion=$('#descripcion').val();
-        if(descripcion==""){
-            throw "La descripción no se puede dejar vacía";
-            
-        }else{
-            return descripcion;
-        }
-            
-           
+    descripcion=$('#descripcion').val();
+    if(descripcion==""){
+        throw "La descripción no se puede dejar vacía";
         
-    } catch (error) {
-        alert(error)
-    }
+    }else{
+        return descripcion;
+        }
+
 }  
 
 function verificarCategoria(){
-    try {
-        categoria=$('.categoria').val();
-        if(categoria==""){
-            throw "No esta metido en ninguna categoria"
-        }else{
-            categorias=categoria.split(',');
-            return categorias;
-        }        
-    } catch (error) {
-        alert(error)
-    }
+    categoria=$('.categoria').val();
+    if(categoria==""){
+        throw "No esta metido en ninguna categoria"
+    }else{
+        categorias=categoria.split(',');
+        return categorias;
+    }        
 }
+
 function guardarCategoria(){
     
     let categoria =$("#categoria option:selected").val();
@@ -190,5 +181,23 @@ function guardarCategoria(){
         alert(hidden.val());
 }
 
-
+function errores(error) {
+    
+    switch (error) {
+        case "nif1":
+            $('#nif').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "nif2":
+            $('#nif').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+            break;
+        /*case "nif1":
+            $('#nif').notify(texto,{position: posicion,className: tipo });
+            break;
+        case "nif2":
+            $('#nif').notify(texto,{position: posicion,className: tipo });
+            break;*/
+        default:
+            break;
+    }
+} 
 

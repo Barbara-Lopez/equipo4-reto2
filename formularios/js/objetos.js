@@ -53,7 +53,7 @@ function crearProducto(nombre,descripcion,precio,stock,categoria,foto){
     };
     $.ajax({
         type: "POST",
-        url: "productos.php?formulario=producto",
+        url: "productos.php",
         data: producto,
     })
     .done(function(){
