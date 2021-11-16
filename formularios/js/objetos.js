@@ -5,6 +5,7 @@ function Producto(nombre,descripcion,precio,stock,categoria,foto){
     this.stock=stock;
     this.categoria=categoria;
     this.foto=foto;
+    this.fecha=date;
 }
 function Usuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
     this.nif=nif;
@@ -40,8 +41,8 @@ function crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
     })
 }
 
-function crearProducto(nombre,descripcion,precio,stock,categoria,foto){
-    let p= new Producto(nombre,descripcion,precio,stock,categoria,foto);
+function crearProducto(nombre,descripcion,precio,stock,categoria,foto,date){
+    let p= new Producto(nombre,descripcion,precio,stock,categoria,foto,date);
     let producto= {
         "nombre" : p.nombre,
         "descripcion" : p.descripcion,
@@ -49,6 +50,7 @@ function crearProducto(nombre,descripcion,precio,stock,categoria,foto){
         "stock" : p.stock,
         "categoria" : p.categoria,
         "foto" : p.foto,
+        "fecha" : p.fecha,
         "formulario" : "producto"
     };
     $.ajax({

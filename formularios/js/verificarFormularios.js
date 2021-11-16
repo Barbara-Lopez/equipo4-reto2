@@ -35,39 +35,12 @@ function verificarDatos(formulrio){
             precio=verificarPrecio();
             stock=$('#stock').val();
             categoria=verificarCategoria();
-            foto=$('#foto').val();
+            foto=verificarFoto();
             date=new Date (2000,02,22);      
-            console.log(date);
-            crearProducto(nombre,descripcion,precio,stock,categoria,foto);
+            crearProducto(nombre,descripcion,precio,stock,categoria,foto,date);
         }
     } catch (error) {
         errores(error);
-     
-        
-    }
-}
-
-function verificarNombre(){
-    nombre=$('#nombre').val();
-    reg=new RegExp("^[0-9a-zA-Z]*$");
-
-    if(reg.test(nombre))
-        return nombre;
-    else
-        throw "Nombre esta mal escrito o vacio, vuelva a escribirlo"
-}
-
-function verificarContrasena(){
-    c1=$('#contrasena1').val();
-    c2=$('#contrasena2').val();
-    if(c1=="" && c2==""){
-        throw "contrasena1"
-    }
-    else{
-        if(c1==c2)
-            return c1;
-        else
-            throw "contrasena2"
     }
 }
 
@@ -86,18 +59,47 @@ function verificarNif(){
     }
 }
 
+function verificarNombre(){
+    nombre=$('#nombre').val();
+    reg=new RegExp("^[0-9a-zA-Z]*$");
+
+    if (nombre=="") {
+        throw "nombre1"
+    } else {
+        if(reg.test(nombre))
+            return nombre;
+        else
+            throw "nombre2"
+    }
+   
+}
+
+function verificarContrasena(){
+    c1=$('#contrasena1').val();
+    c2=$('#contrasena2').val();
+    if(c1=="" && c2==""){
+        throw "contrasena1"
+    }
+    else{
+        if(c1==c2)
+            return c1;
+        else
+            throw "contrasena2"
+    }
+}
+
 function verificarCorreoElectronico(){
     correo=$('#correo').val();
     reg=new RegExp("^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$");
 
     if(correo==""){
-        throw "El correo esta vacio";
+        throw "correo1";
     }
     else{ 
         if(reg.test(correo))
             return correo;
         else
-            throw "El correo esta mal escrito vuelva a escribirlo";
+            throw "correo2";
     }
 }
 
@@ -106,13 +108,13 @@ function verificarTelefono(){
     reg=new RegExp("^[0-9]{9}$");
 
     if(telefono==""){
-        throw "El telefono esta vacio";
+        throw "telefono1";
     }
     else{    
         if(reg.test(telefono))
             return telefono;
         else
-            throw "Telefono mal escrito vuelva a escribirlo";
+            throw "telefono2";
     }
     
 }
@@ -122,13 +124,13 @@ function verificarDireccion(){
     reg=new RegExp("^[a-zA-Z]*,[a-zA-Z]*$");
 
     if(direccion==""){
-        throw "La dirección esta vacia";
+        throw "direccion1";
     }
     else{
         if(reg.test(direccion))
             return direccion;
         else
-            throw "La dirección esta mal escrita vuelva a escribirlo";
+            throw "direccion2";
     }
 }
 
@@ -137,31 +139,40 @@ function verificarPrecio(){
     reg=new RegExp("^[0-9]+([,][0-9]+)?$");
 
     if(precio==""){
-
+        throw "precio1"
     }
     else{
         if(reg.test(precio))
         return precio;
         else
-            throw "El precio esta mal escrito vuelva a escribirlo"; 
+            throw "precio2"; 
     }    
 }
 
 function verificarDescripcion(){
     descripcion=$('#descripcion').val();
     if(descripcion==""){
-        throw "La descripción no se puede dejar vacía";
+        throw "descripcion";
         
     }else{
         return descripcion;
-        }
+    }
+} 
 
-}  
+function verificarFoto(){
+    foto=$('#foto').val();
+    if(foto==""){
+        throw "foto";
+        
+    }else{
+        return foto;
+    }
+} 
 
 function verificarCategoria(){
     categoria=$('.categoria').val();
     if(categoria==""){
-        throw "No esta metido en ninguna categoria"
+        throw "categoria"
     }else{
         categorias=categoria.split(',');
         return categorias;
@@ -174,7 +185,7 @@ function guardarCategoria(){
 
     let hidden=$('.categoria');
         if(hidden.val()=="")
-             hidden.val(categoria);
+            hidden.val(categoria);
         else
             hidden.val(hidden.val()+","+categoria);  
             
@@ -190,12 +201,51 @@ function errores(error) {
         case "nif2":
             $('#nif').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
             break;
-        /*case "nif1":
-            $('#nif').notify(texto,{position: posicion,className: tipo });
+        case "nombre1":
+            $('#nombre').notify("No se puede dejar vacio",{position: "right",className: "warn" });
             break;
-        case "nif2":
-            $('#nif').notify(texto,{position: posicion,className: tipo });
-            break;*/
+        case "nombre2":
+            $('#nombre').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+            break;
+        case "contrasena1":
+            $('#contrasena').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "contrasena2":
+            $('#contrasena').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+            break;
+        case "correo1":
+            $('#correo').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "correo2":
+            $('#correo').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+            break;
+        case "telefono1":
+            $('#telefono').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "telefono2":
+            $('#telefono').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+            break;
+        case "direccion1":
+            $('#direccion').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "direccion2":
+            $('#direccion').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+            break;
+        case "precio1":
+            $('#precio').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "precio2":
+            $('#precio').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+            break;
+        case "descripcion":
+            $('#descripcion').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "categoria":
+            $('#categoria').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "foto":
+            $('#foto').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
         default:
             break;
     }
