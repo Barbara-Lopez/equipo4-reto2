@@ -12,9 +12,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
     </head>
     <body>
-        <h1><?php
-            require "enviarBaseDatos.php";
-        ?></h1>
+        <?php
+            require "enviarFormBaseDatos.php";
+        ?>
         
         <form action="productos.php" method="post" id="formProducto" enctype="multipart/form-data">
             <fieldset>

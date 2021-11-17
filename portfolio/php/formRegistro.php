@@ -13,7 +13,7 @@
     </head>
     <body>
         <?php
-            require "enviarBaseDatos.php";
+            require "enviarFormBaseDatos.php";
         ?>
         <form action="registro.php" method="post" id="formUsuario" enctype="multipart/form-data">
             <fieldset>

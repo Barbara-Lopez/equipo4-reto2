@@ -33,7 +33,7 @@ function crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
     
     $.ajax({
         type: "POST",
-        url: "enviarBaseDatos.php",
+        url: "enviarFormBaseDatos.php",
         data: persona,
        
     })
@@ -58,7 +58,7 @@ function crearProducto(nombre,descripcion,precio,stock,categoria,foto,date){
     };
     $.ajax({
         type: "POST",
-        url: "productos.php",
+        url: "enviarFormBaseDatos.php",
         data: producto,
     })
     .done(function(){
