@@ -20,28 +20,28 @@
                 <legend>Registrar usuario</legend>
                 
                 <label for="nif">Nif usuario</label>
-                <input type="text" id="nif" placeholder="nif" minlength="5" maxlength="16">
+                <input type="text" class="usuario" id="nif" placeholder="11111111J" minlength="5" maxlength="16">
                 
                 <label for="contrasena1">Contraseña</label>
-                <input type="password"  id="contrasena1" placeholder="contrasena" minlength="5" maxlength="20">
+                <input type="password" class="usuario" id="contrasena1" placeholder="contrasena" minlength="5" maxlength="20">
                 
-                <label for="contrasena2">Repetir ontraseña</label>
-                <input type="password" id="contrasena2" placeholder="contrasena" minlength="5" maxlength="20">
+                <label for="contrasena2">Repetir contraseña</label>
+                <input type="password" class="usuario" id="contrasena2" placeholder="contrasena" minlength="5" maxlength="20">
                 
                 <label for="nombre">Su nombre</label>
-                <input type="text"  id="nombre" placeholder="nombre">
+                <input type="text" class="usuario" id="nombre" placeholder="nombre">
                 
                 <label for="correo">Correo electronico</label>
-                <input type="text"  id="correo" placeholder=" pepe@gmail.com">
+                <input type="text" class="usuario" id="correo" placeholder=" pepe@gmail.com">
 
                 <label for="tel">Telefono</label>
-                <input type="text"  id="tel" placeholder="655633677">
+                <input type="text" class="usuario" id="tel" placeholder="655633677">
                 
                 <label for="direccion">Direccion</label>
-                <input type="text"  id="direccion" placeholder=" Vitoria,alava">
+                <input type="text" class="usuario" id="direccion" placeholder=" Vitoria,alava">
                 
                 <label for="foto">Foto</label>
-                <input type="file"  id="foto" accept="image/png,image/jpeg,image/jpg">
+                <input type="file" class="usuario" id="foto" accept="image/png,image/jpeg,image/jpg">
                 
                 <input type="button" value="Enviar" id="enviar">
             </fieldset>

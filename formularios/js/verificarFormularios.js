@@ -25,16 +25,20 @@ function verificarDatos(formulrio){
             telefono=verificarTelefono();
             direccion=verificarDireccion();
             foto=$('#foto').val();
+            
             crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto);
+            $('.usuario').val("");
+            
         } else{
             nombre=verificarNombre();
             descripcion=verificarDescripcion();
             precio=verificarPrecio();
-            stock=$('#stock').val();
-            categoria=verificarCategoria();
+            stock=verificarStock();
             foto=verificarFoto();
+            categoria=verificarCategoria();
             date=new Date (2000,02,22);      
             crearProducto(nombre,descripcion,precio,stock,categoria,foto,date);
+            $('.producto').val("");
         }
     } catch (error) {
         errores(error);
@@ -73,14 +77,26 @@ function verificarNombre(){
 function verificarContrasena(){
     c1=$('#contrasena1').val();
     c2=$('#contrasena2').val();
-    if(c1=="" && c2==""){
+    reg=new RegExp("^[0-9a-zA-Z]{5,10}$");
+    if(c1==""){
         throw "contrasena1"
     }
     else{
-        if(c1==c2)
-            return c1;
-        else
+        if(c2==""){
             throw "contrasena2"
+        }
+        else{
+            if(c1==c2){
+                if(reg.test(c1) && reg.test(c2)){
+                    return c1;
+                }
+                else{
+                    throw "contrasena4"
+                }
+            }
+            else
+                throw "contrasena3"
+        }
     }
 }
 
@@ -164,6 +180,15 @@ function verificarFoto(){
         return foto;
     }
 } 
+function verificarStock(){
+    stock=$('#stock').val();
+    if(stock==""){
+        throw "stock";
+        
+    }else{
+        return stock;
+    }
+} 
 
 function verificarCategoria(){
     categoria=$('.categoria').val();
@@ -176,16 +201,17 @@ function verificarCategoria(){
 }
 
 function guardarCategoria(){
-    
     let categoria =$("#categoria option:selected").val();
 
     let hidden=$('.categoria');
-        if(hidden.val()=="")
+        if(hidden.val()==""){
             hidden.val(categoria);
-        else
-            hidden.val(hidden.val()+","+categoria);  
-            
-        alert(hidden.val());
+        } 
+        else{
+            hidden.val(hidden.val()+","+categoria);
+        }
+        texto="Categoria: "+hidden.val()
+        $('#enviarCategoria').notify(texto,{position: "right",className: "none" });
 }
 
 function errores(error) {
@@ -204,10 +230,16 @@ function errores(error) {
             $('#nombre').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
             break;
         case "contrasena1":
-            $('#contrasena').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            $('#contrasena1').notify("No se puede dejar vacio",{position: "right",className: "warn" });
             break;
         case "contrasena2":
-            $('#contrasena').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+            $('#contrasena2').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "contrasena3":
+            $('#contrasena1').notify("Las contraseñas no coinciden",{position: "right",className:"error" });
+            break;
+        case "contrasena4":
+            $('#contrasena1').notify("La contraseña tiene que tener una longitud de minimo de 5 y maximo de 10",{position: "right",className: "info"});
             break;
         case "correo1":
             $('#correo').notify("No se puede dejar vacio",{position: "right",className: "warn" });
@@ -216,10 +248,10 @@ function errores(error) {
             $('#correo').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
             break;
         case "telefono1":
-            $('#telefono').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            $('#tel').notify("No se puede dejar vacio",{position: "right",className: "warn" });
             break;
         case "telefono2":
-            $('#telefono').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+            $('#tel').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
             break;
         case "direccion1":
             $('#direccion').notify("No se puede dejar vacio",{position: "right",className: "warn" });
@@ -241,6 +273,9 @@ function errores(error) {
             break;
         case "foto":
             $('#foto').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+            break;
+        case "stock":
+            $('#stock').notify("No se puede dejar vacio",{position: "right",className: "warn" });
             break;
         default:
             break;

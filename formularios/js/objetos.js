@@ -18,6 +18,7 @@ function Usuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
 }
 
 function crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
+    
     let user= new Usuario(nif,contrasena,nombre,correo,telefono,direccion,foto);
     let persona= {
         "nif" : user.nif,
@@ -38,7 +39,9 @@ function crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
     })
     .done(function(){
         alert("Enviado correctamente");
-    })
+    });
+    
+    
 }
 
 function crearProducto(nombre,descripcion,precio,stock,categoria,foto,date){

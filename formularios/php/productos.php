@@ -41,11 +41,11 @@
                     <option value="robotica">robotica</option>
                     <option value="escolar">escolar</option>
                 </select>
-                <input type="hidden" name="" value="" class="categoria">
+                <input type="hidden" name="producto" value="" class="categoria">
 
                 <input type="button" value="Agregar categoria" id="enviarCategoria"> 
                 
-                <input type="submit" value="Enviar" id="enviar">
+                <input type="button" value="Enviar" id="enviar">
             </fieldset>
         </form>
     </body>
