@@ -13,8 +13,9 @@
     </head>
     <body>
         <?php
-            require "enviarFormBaseDatos.php";
+            require "header.php";
         ?>
+
         <form action="registro.php" method="post" id="formUsuario" enctype="multipart/form-data">
             <fieldset>
                 <legend>Registrar usuario</legend>
@@ -46,6 +47,9 @@
                 <input type="button" value="Enviar" id="enviar">
             </fieldset>
         </form>
-        
+
+        <?php
+            require "footer.php";
+        ?>
     </body>
 </html>

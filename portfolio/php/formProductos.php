@@ -13,7 +13,7 @@
     </head>
     <body>
         <?php
-            require "enviarFormBaseDatos.php";
+            require "header.php";
         ?>
         
         <form action="productos.php" method="post" id="formProducto" enctype="multipart/form-data">
@@ -48,5 +48,9 @@
                 <input type="button" value="Enviar" id="enviar">
             </fieldset>
         </form>
+
+        <?php
+            require "footer.php";
+        ?>
     </body>
 </html>
