@@ -9,8 +9,14 @@ $(document).ready(
                 }                 
                 verificarDatos(formulrio);
             });
-            $('#enviarCategoria').click(function(){
+            $('#enviarCategoria').click(function(event){
                 guardarCategoria();
+            });
+            $('#eliminarCategoria').click(function(event){
+                $('.categoria').val("");
+                if( $('.categoria').val()==""){
+                    $('#eliminarCategoria').notify("Categoria eliminada",{position: "right",className: "none" });
+                } 
             });
         
 });
@@ -18,14 +24,13 @@ $(document).ready(
 function verificarDatos(formulrio){
     try {
         if(formulrio=="usuario"){
-            nif=verificarNif();
+            nombreUsuario=verificarNombreUsuario();
             contrasena=verificarContrasena();
             nombre=verificarNombre();
             correo=verificarCorreoElectronico();
             telefono=verificarTelefono();
             direccion=verificarDireccion();
             foto=$('#foto').val();
-            
             crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto);
             $('.usuario').val("");
             
@@ -36,7 +41,7 @@ function verificarDatos(formulrio){
             stock=verificarStock();
             foto=verificarFoto();
             categoria=verificarCategoria();
-            date=new Date (2000,02,22);      
+            date=new Date ();      
             crearProducto(nombre,descripcion,precio,stock,categoria,foto,date);
             $('.producto').val("");
         }
@@ -45,8 +50,8 @@ function verificarDatos(formulrio){
     }
 }
 
-function verificarNif(){
-    nif=$('#nif').val();
+function verificarNombreUsuario(){
+    nombreUsuario=$('#nombreUsuario').val();
     reg=new RegExp("^[0-9]{8}[A-Z]{1}$");
 
     if(nif==""){
@@ -210,7 +215,7 @@ function guardarCategoria(){
         else{
             hidden.val(hidden.val()+","+categoria);
         }
-        texto="Categoria: "+hidden.val()
+        texto="Categoria: "+hidden.val();
         $('#enviarCategoria').notify(texto,{position: "right",className: "none" });
 }
 

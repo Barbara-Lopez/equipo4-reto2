@@ -7,8 +7,8 @@ function Producto(nombre,descripcion,precio,stock,categoria,foto){
     this.foto=foto;
     this.fecha=date;
 }
-function Usuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
-    this.nif=nif;
+function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto){
+    this.nombreUsuario=nombreUsuario;
     this.contrasena=contrasena;
     this.nombre=nombre;
     this.correo=correo;
@@ -17,11 +17,11 @@ function Usuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
     this.foto=foto;
 }
 
-function crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
+function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto){
     
-    let user= new Usuario(nif,contrasena,nombre,correo,telefono,direccion,foto);
+    let user= new Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto);
     let persona= {
-        "nif" : user.nif,
+        "nombreUsuario" : user.nombreUsuario,
         "contrasena" : user.contrasena,
         "nombre" : user.nombre,
         "correo" : user.correo,
@@ -30,18 +30,15 @@ function crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto){
         "foto" : user.foto,
         "formulario" : "usuario"
     };
-    
+
     $.ajax({
         type: "POST",
         url: "enviarFormBaseDatos.php",
         data: persona,
-       
     })
     .done(function(){
         alert("Enviado correctamente");
-    });
-    
-    
+    }); 
 }
 
 function crearProducto(nombre,descripcion,precio,stock,categoria,foto,date){
@@ -56,6 +53,7 @@ function crearProducto(nombre,descripcion,precio,stock,categoria,foto,date){
         "fecha" : p.fecha,
         "formulario" : "producto"
     };
+
     $.ajax({
         type: "POST",
         url: "enviarFormBaseDatos.php",

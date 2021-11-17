@@ -25,7 +25,7 @@ function close(){
 
 function crearUsuario(){
     $datos= array(
-        'nif'=> $_POST["nif"],
+        'nombreUsuario'=> $_POST["nombreUsuario"],
         'contrasena'=> $_POST["contrasena"],
         'nombre'=>$_POST["nombre"],
         'correo'=>$_POST["correo"],
@@ -34,7 +34,7 @@ function crearUsuario(){
     );
         
     $dbh=connect();
-    $stmt= $dbh->prepare("INSERT INTO usuario (nombreusu,contrasenausu,nombre,gmail,tlfno,direccion) VALUES (:nif,:contrasena,:nombre,:correo,:telefono,:direccion)");
+    $stmt= $dbh->prepare("INSERT INTO usuario (nombreusu,contrasenausu,nombre,gmail,tlfno,direccion) VALUES (:nombreUsuario,:contrasena,:nombre,:correo,:telefono,:direccion)");
     $stmt->execute($datos);
     $dbh=close();
     
