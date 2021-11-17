@@ -402,8 +402,49 @@ footer .footer-items{
   border-radius: 5px;
 }
 
+/* estetica de los formularios */
+form{
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+  align-content: center;
+}
+fieldset{
+  width: 100%;
+  margin: 0 1em;
+  background-color: rgba(133, 172, 180, 0.2);  
+  border-radius: 1em;
+}
 
-
+.formulario{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 1em;
+  padding: 1.5em;
+}
+legend{
+  margin-left: 2em;
+}
+input:not(.boton), textarea, select{
+  width: 100%;
+  margin: .3em 0 ;
+  padding: 1em 0em 1em 1em;
+  border-radius: .5em;
+  border: 1px solid lightgray;
+}
+label{
+  width: 100%; 
+  margin-top: 1em;
+}
+.boton{
+  margin: .5em;
+  padding: .5em;
+}
+#foto{
+  border: none;
+}
 
 /* clases esteticas para diferentes elementos*/
 .bBonito {
@@ -485,6 +526,18 @@ footer .footer-items{
     .stock,.localidad{
       display: inherit;
     }
+    orm{
+      width: 95%;
+    }
+    fieldset{
+      width: 95%;
+    }
+    input:not(.boton), textarea, select{
+      width: 85%;
+    }
+    label{
+      width: 85%; 
+    }
 }
 @media screen and (min-width: 900px){ 
     footer .footer-items{
@@ -497,6 +550,18 @@ footer .footer-items{
     .stock,.localidad{
       display: inherit;
     }
+    form{
+      width: 90%;
+    }
+    fieldset{
+      width: 90%;
+    }
+    input:not(.boton), textarea, select{
+      width: 80%;
+    }
+    label{
+      width: 80%; 
+    }
 }
 @media screen and (min-width: 1500px){
   #contenedorProductos{
@@ -504,6 +569,18 @@ footer .footer-items{
   }
   .producto{
     margin: 1em;
+  }
+  form{
+    width: 80%;
+  }
+  fieldset{
+    width: 80%;
+  }
+  input:not(.boton), textarea, select{
+    width: 70%;
+  }
+  label{
+    width: 70%; 
   }
 }
 

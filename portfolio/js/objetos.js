@@ -18,7 +18,6 @@ function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto)
 }
 
 function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto){
-    
     let user= new Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto);
     let persona= {
         "nombreUsuario" : user.nombreUsuario,

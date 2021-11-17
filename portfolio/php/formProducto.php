@@ -8,15 +8,10 @@
         <script src="../js/objetos.js"></script>
         <script src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/verificarFormularios.js"></script>
-        <link rel="stylesheet" href="../css/formularios.css">
         <link rel="stylesheet" href="../css/style.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
     </head>
     <body>
-        <?php
-            require "header.php";
-        ?>
-        
         <form action="productos.php" method="post" id="formProducto" enctype="multipart/form-data">
             <fieldset>
                 <legend>Subir producto</legend>
@@ -53,9 +48,5 @@
                 </div>
             </fieldset>
         </form>
-
-        <?php
-            require "footer.php";
-        ?>
     </body>
 </html>
