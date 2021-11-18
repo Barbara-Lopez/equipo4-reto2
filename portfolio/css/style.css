@@ -43,6 +43,13 @@ header #icono {
   margin: 0.5em;
   height: 0;
 }
+header a img {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+}
 header #bCesta {
   filter: brightness(1.1);
   blend-mode: multiply;
@@ -113,6 +120,8 @@ header #contenedorSesion button {
   top: 0 !important;
 }
 .hidden{
+  height: 1px !important;
+  min-height: 0px !important;
 }
 #contenedorLogin  input, #contenedorLogin label{
   text-align: center;
@@ -121,7 +130,7 @@ header #contenedorSesion button {
   margin: 0.5em;
 }
 
-#contenedorLogin #bEnviar, img {
+#contenedorLogin #bEnviar,#contenedorLogin img {
   width: 30px;
   height: 30px;
   background: transparent;
@@ -165,7 +174,8 @@ footer {
 
 .footer-items {
     width: calc(100%/3);
-    padding: 1em 4em;
+    min-width: 300px;
+    padding: 1em 2em;
     box-sizing: border-box;
 }
 
@@ -224,17 +234,61 @@ footer .footer-items{
 }
 
 /*estilo cajas producto*/
-#contenedorProductos{
+.contenedorProductos{
   width: 100vw;
   display: flex;
   flex-flow: row wrap;
   align-content: center;
   justify-content: center;
   align-items: center;
-  /*grid-auto-rows: minmax(100px, auto);*/
+  border-radius: 10px;
+}
+#formFiltroProductos{
+  width: 100%;
+  max-width: 1100px;
+  padding: 1em;
+  border-radius: 10px;
+}
+#formFiltroProductos form{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+#formFiltroProductos form input{
+  border-radius: 5px;
+}
+#formFiltroProductos form *{
+  margin-bottom: 0.5em;
+}
+#formFiltroProductos form #fFiltro{
+  width: 100%;
+  height: 23px;
+}
+#formFiltroProductos #divFCategoria,#divFLocalidad{
+  width: 50%;
+}
+#divFCategoria *, #divFLocalidad *{
+  width: 50%;
+}
+#divFPrecioMin, #divFPrecioMax {
+  width: 50%;
+}
+#divFPrecioMin label,#divFPrecioMax label{
+  width: 30%;
+}
+#divFPrecioMax input[type="range"], #divFPrecioMin input[type="range"]{
+  width: 70%;
+}
+#formFiltroProductos > #fSubmit{
+  width: 20%;
+  max-width: 120px;
 }
 .producto{
-  margin-top: 1em;
+  margin: 0.5em;
   width: 100%;
   max-width: 700px;
   height: 250px;
@@ -279,12 +333,15 @@ footer .footer-items{
   padding-left: 1em;;
 }
 .fav{
-  color: lightgreen;
+  color: maroon;
   font-size: 20px;
 }
 .fav:hover{
   font-size: 25px;
   color: green;
+}
+.fav::before{
+  content: \2661;
 }
 .descripcionProducto{
   width: 70%;
@@ -331,10 +388,83 @@ footer .footer-items{
   overflow: hidden;
 }
 
-/*Estilos relacionados con cesta*/
+
+
+/*-------------------------------ESTILOS DESTALLES PRODUCTO-------------------------*/
+#detallesProducto{
+  width: 85%;
+  max-width: 750px;
+  margin: 0 auto;
+  background-color: greenyellow;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+.nombreLocalidadFav{
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+}
+.nombreLocalidadFav > div *{
+  margin: 0.2em;
+}
+.nombreLocalidadFav > div  #dUsuario{
+  font-size: 20px;
+  font-weight: 600;
+}
+.nombreLocalidadFav .fav{
+  margin-right: 7%;
+}
+.imagenesProducto{
+
+  width: 100%;
+  height: 80vw;
+  max-width: 750px;
+  max-height: 750px;
+}
+.imagenesProducto img{
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.dPrecioTituloCat{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+.dPrecioTituloCat  > * {
+  display: inline-block;
+  margin: 0.2em 1em;
+}
+.dPrecioTituloCat #dCategoria {
+  align-self: flex-end;
+  padding: 0.3em;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+.dDescProducto{
+  padding: 0.4em 0.8em;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------Estilos relacionados con cesta--------------------------------*/
 #contenedorCesta{
   width: 100vw; /*cambiar para mobile first*/
   max-width: 450px;
+  padding-right: 100px;/*no funciona el padding*/
   height: 350px;
   position: absolute;
   background-color: rgba(53, 110, 122,1);
@@ -350,7 +480,7 @@ footer .footer-items{
   left: 130%;
 }
 .cestaNoHidden{
-  left: calc(100% - 450px); !important
+  left: calc(100% - 450px) !important;
 }
 .tituloCesta{
   margin: 0.2em 0 0.5em 0;
@@ -405,7 +535,7 @@ footer .footer-items{
 
 
 
-/* clases esteticas para diferentes elementos*/
+/* --------------------------------------clases esteticas para diferentes elementos*--------------------*/
 .bBonito {
   width: 8vw;
   min-width: 10em;
@@ -469,6 +599,27 @@ footer .footer-items{
 #contenedorItemsCesta::-webkit-scrollbar-track:active {
   background: #d4d4d4;
 }
+/*---------Titulo Productos---------*/
+.tituloProductos {
+  text-align: center;
+  width: 50%;
+  text-align: left; 
+  font-family: Arial Black; 
+  font-weight: bold; font-size: 30px; 
+  background: #202020; 
+  -webkit-background-clip: text; 
+  -moz-background-clip: text; 
+  background-clip: text; 
+  color: transparent; 
+  text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px rgba(0,0,0,0.3);
+  border-bottom: 2px solid orangered;
+  border-top: 2px solid orangered;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  margin: 1em;
+  }
+  
 
 
 
@@ -478,7 +629,10 @@ footer .footer-items{
 
 /*---------MEDIA QUERIES-----------*/
 
-@media screen and (min-width: 550px) and (max-width: 990px) { 
+@media screen and (min-width: 550px) and (max-width: 990px) {
+  #cestaNoHidden{
+    left: calc(100vw - 450px); !important
+  }
     footer .footer-items{
         width: 45%;
     }
@@ -487,23 +641,27 @@ footer .footer-items{
     }
 }
 @media screen and (min-width: 900px){ 
+  #cestaNoHidden{
+    left: calc(100vw - 450px)!important; 
+  }
     footer .footer-items{
       width: 30%;
     }
     .producto{
-      margin: 1em;
-      max-width: 850px;
+      max-width: 750px;
     }
     .stock,.localidad{
       display: inherit;
     }
 }
 @media screen and (min-width: 1500px){
+  #cestaNoHidden{
+    left: calc(100vw - 450px) !important; 
+  }
   #contenedorProductos{
     width: 90%;
   }
   .producto{
-    margin: 1em;
   }
 }
 
