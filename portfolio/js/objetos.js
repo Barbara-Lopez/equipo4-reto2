@@ -5,7 +5,6 @@ function Producto(nombre,descripcion,precio,stock,categoria,foto){
     this.stock=stock;
     this.categoria=categoria;
     this.foto=foto;
-    this.fecha=date;
 }
 function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto){
     this.nombreUsuario=nombreUsuario;
@@ -40,8 +39,8 @@ function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,
     }); 
 }
 
-function crearProducto(nombre,descripcion,precio,stock,categoria,foto,date){
-    let p= new Producto(nombre,descripcion,precio,stock,categoria,foto,date);
+function crearProducto(nombre,descripcion,precio,stock,categoria,foto){
+    let p= new Producto(nombre,descripcion,precio,stock,categoria,foto);
     let producto= {
         "nombre" : p.nombre,
         "descripcion" : p.descripcion,
@@ -49,7 +48,6 @@ function crearProducto(nombre,descripcion,precio,stock,categoria,foto,date){
         "stock" : p.stock,
         "categoria" : p.categoria,
         "foto" : p.foto,
-        "fecha" : p.fecha,
         "formulario" : "producto"
     };
 

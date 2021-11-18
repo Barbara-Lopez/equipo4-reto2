@@ -31,7 +31,7 @@ function verificarDatos(formulrio){
             telefono=verificarTelefono();
             direccion=verificarDireccion();
             foto=$('#foto').val();
-            crearUsuario(nif,contrasena,nombre,correo,telefono,direccion,foto);
+            crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto);
             $('.usuario').val("");
             
         } else{
@@ -40,9 +40,8 @@ function verificarDatos(formulrio){
             precio=verificarPrecio();
             stock=verificarStock();
             foto=verificarFoto();
-            categoria=verificarCategoria();
-            date=new Date ();      
-            crearProducto(nombre,descripcion,precio,stock,categoria,foto,date);
+            categoria=verificarCategoria();      
+            crearProducto(nombre,descripcion,precio,stock,categoria,foto);
             $('.producto').val("");
         }
     } catch (error) {
@@ -52,16 +51,16 @@ function verificarDatos(formulrio){
 
 function verificarNombreUsuario(){
     nombreUsuario=$('#nombreUsuario').val();
-    reg=new RegExp("^[0-9]{8}[A-Z]{1}$");
+    reg=new RegExp("^[0-9a-zA-Z]*$");
 
-    if(nif==""){
-        throw "nif1"
+    if(nombreUsuario==""){
+        throw "nombreUsuario1"
     }
     else{
-        if(reg.test(nif))
-            return nif;
+        if(reg.test(nombreUsuario))
+            return nombreUsuario;
         else
-            throw "nif2";
+            throw "nombreUsuario2";
     }
 }
 
@@ -198,7 +197,8 @@ function verificarStock(){
 function verificarCategoria(){
     categoria=$('.categoria').val();
     if(categoria==""){
-        throw "categoria"
+        categorias=["otros"];
+        return categorias;
     }else{
         categorias=categoria.split(',');
         return categorias;
@@ -222,11 +222,11 @@ function guardarCategoria(){
 function errores(error) {
     
     switch (error) {
-        case "nif1":
-            $('#nif').notify("No se puede dejar vacio",{position: "right",className: "warn" });
+        case "nombreUsuario1":
+            $('#nombreUsuario').notify("No se puede dejar vacio",{position: "right",className: "warn" });
             break;
-        case "nif2":
-            $('#nif').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
+        case "nombreUsuario2":
+            $('#nombreUsuario').notify("Mal escrito vuelva a escribirlo",{position: "right",className:"error" });
             break;
         case "nombre1":
             $('#nombre').notify("No se puede dejar vacio",{position: "right",className: "warn" });
@@ -272,10 +272,7 @@ function errores(error) {
             break;
         case "descripcion":
             $('#descripcion').notify("No se puede dejar vacio",{position: "right",className: "warn" });
-            break;
-        case "categoria":
-            $('#categoria').notify("No se puede dejar vacio",{position: "right",className: "warn" });
-            break;
+            break; 
         case "foto":
             $('#foto').notify("No se puede dejar vacio",{position: "right",className: "warn" });
             break;
