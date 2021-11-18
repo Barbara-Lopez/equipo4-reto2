@@ -1,10 +1,9 @@
 
 window.onload=main()
-
 function main(){
   try{
-    for(i=0; i < 10; i++){
-      generarCajaProducto('contenedorProductos', 1, 'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://www.elagoradiario.com/wp-content/uploads/2021/05/Lagos-m%C3%A1s-grandes-del-mundo-1140x600.jpg', 'Noche en Lago', 'Pasa una preciosa npche en una cabaña en el lago.', 'Huesca', '70', '2')
+    for(i=0; i < 4; i++){
+      generarCajaProducto('contenedorProductos', i, 'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://www.elagoradiario.com/wp-content/uploads/2021/05/Lagos-m%C3%A1s-grandes-del-mundo-1140x600.jpg', 'Noche en Lago', 'Pasa una preciosa npche en una cabaña en el lago.', 'Huesca', '70', '2')
     }
     actualizarCesta()
     generarEventos()
@@ -16,7 +15,6 @@ function main(){
 }
 
 
-ultimoDesplegado={"botonDesplegable":null,"funcionDesplegable":null, "desplegado":false}
 
 function generarEventos(){
     botonDesplegarCesta=document.getElementById("bCesta");
@@ -27,9 +25,13 @@ function generarEventos(){
     botonLogin.addEventListener("click", iniciarSesion)
     botonesFavorito=document.getElementsByClassName("fav")
     for(boton of botonesFavorito){
+      //boton.addEventListener("click", anadirACesta)
+      //boton.addEventListener("click", actualizarCesta)
+    }
+    botonesAnadirCesta=document.getElementsByClassName("botonCesta")
+    for(boton of botonesAnadirCesta){
       boton.addEventListener("click", anadirACesta)
       boton.addEventListener("click", actualizarCesta)
-      boton.addEventListener("click", generarEventos)
     }
     botonesBorrar=document.getElementsByClassName("bBorrarProductoCesta")
     for(boton of botonesBorrar){
@@ -38,55 +40,79 @@ function generarEventos(){
     }
     botonesCant=document.getElementsByClassName("cantProductoCesta")
     for(boton of botonesCant){
-      boton.addEventListener("click", anadirACesta)
+      boton.addEventListener("click", modCantCesta)
       boton.addEventListener("click", actualizarCesta)
-      boton.addEventListener("click", generarEventos)
     }
   }
   
+
+  
+
+
+
+
+//----------------GESTION DESPLEGABLES---------------------------------------------------
+
+
+
+
+ultimoDesplegado={"botonDesplegable":null,"funcionDesplegable":null, "desplegado":false}
+
+
 function gestionarDesplegables(){ //si el boton que llama a la funcion es diferente al ultimo se ejecuta la ultima funcion almacenada
-  if(ultimoDesplegado["desplegado"]==true && ultimoDesplegado["botonDesplegable"]!=this.id){
-    ultimoDesplegado["desplegable"]()
+    if(ultimoDesplegado["desplegado"]==true && ultimoDesplegado["botonDesplegable"]!=this.id){
+      ultimoDesplegado["desplegable"]()
+    }
+    switch(this.id){
+      case "bCesta":
+        ultimoDesplegado["botonDesplegable"]=this.id
+        ultimoDesplegado["desplegable"] = desplegarCesta
+        desplegarCesta()
+        break
+      case "bInicio":
+        ultimoDesplegado["botonDesplegable"]=this.id
+        ultimoDesplegado["desplegable"] = desplegarLogin
+        desplegarLogin()
+        break
+    }
   }
-  switch(this.id){
-    case "bCesta":
-      ultimoDesplegado["botonDesplegable"]=this.id
-      ultimoDesplegado["desplegable"] = desplegarCesta
-      desplegarCesta()
-      break
-    case "bInicio":
-      ultimoDesplegado["botonDesplegable"]=this.id
-      ultimoDesplegado["desplegable"] = desplegarLogin
-      desplegarLogin()
-      break
+  
+  function desplegarLogin(){
+    boxLogin=document.getElementById("contenedorLogin")
+    if(boxLogin.getAttribute("class")=="hidden"){
+      boxLogin.setAttribute("class","nohidden")
+      bInicio.setAttribute("class", "bBonito pulsado")
+      ultimoDesplegado["desplegado"]=true
+    }
+    else{
+      boxLogin.setAttribute("class","hidden")
+      bInicio.setAttribute("class", "bBonito")
+      ultimoDesplegado["desplegado"]=false
+    }
   }
-}
+  
+  function desplegarCesta(){
+    boxCesta=document.getElementById("contenedorCesta")
+    if(boxCesta.getAttribute("class")=="cestaHidden"){
+      boxCesta.setAttribute("class","cestaNoHidden")
+      ultimoDesplegado["desplegado"]=true
+    }
+    else{
+      boxCesta.setAttribute("class","cestaHidden")
+      ultimoDesplegado["desplegado"]=false
+    }
+  }
 
-function desplegarLogin(){
-  boxLogin=document.getElementById("contenedorLogin")
-  if(boxLogin.getAttribute("class")=="hidden"){
-    boxLogin.setAttribute("class","nohidden")
-    bInicio.setAttribute("class", "bBonito pulsado")
-    ultimoDesplegado["desplegado"]=true
-  }
-  else{
-    boxLogin.setAttribute("class","hidden")
-    bInicio.setAttribute("class", "bBonito")
-    ultimoDesplegado["desplegado"]=false
-  }
-}
 
-function desplegarCesta(){
-  boxCesta=document.getElementById("contenedorCesta")
-  if(boxCesta.getAttribute("class")=="cestaHidden"){
-    boxCesta.setAttribute("class","cestaNoHidden")
-    ultimoDesplegado["desplegado"]=true
-  }
-  else{
-    boxCesta.setAttribute("class","cestaHidden")
-    ultimoDesplegado["desplegado"]=false
-  }
-}
+
+
+
+
+//----------------------------GESTION CESTA---------------------------------
+
+
+
+
 
 function anadirACesta(){
   cesta = recuperarCesta()
@@ -98,10 +124,7 @@ function anadirACesta(){
   for(id in cesta){
     if(cesta[id]["id"]==this.id){
       encontrado=1
-      producto=cesta[id]
-      cesta.splice(id,1)
-      producto["cant"]=parseInt(producto["cant"]) + 1
-      cesta.push(producto)
+      cesta[id]["cant"]=parseInt(cesta[id]["cant"]) + 1
       guardarCesta(cesta)
     }
   }
@@ -111,6 +134,16 @@ function anadirACesta(){
     cesta=JSON.stringify(cesta)
     localStorage.setItem("cesta", cesta)
     alert("Producto añadido a la cesta")
+  }
+}
+
+function modCantCesta(){
+  cesta = recuperarCesta()
+  for(id in cesta){
+    if(cesta[id]["id"]==this.id){
+      cesta[id]["cant"]=$('.cantProductoCesta ','#' + this.id).val()
+      guardarCesta(cesta)
+    }
   }
 }
 
@@ -158,10 +191,11 @@ function actualizarCesta(){
     precioElementoCesta.setAttribute("class", "precioProductoCesta")
     precioElementoCesta.innerHTML = 22 + "&#8364;" //--------------sql
     cantElementoCesta = document.createElement("input")
-    cantElementoCesta.setAttribute("id", producto.id)
+    cantElementoCesta.setAttribute("id", producto["id"])
     cantElementoCesta.setAttribute("class", "cantProductoCesta")
     cantElementoCesta.setAttribute("type", "number")
     cantElementoCesta.setAttribute("value", producto["cant"])
+    cantElementoCesta.setAttribute("min", 1)
     //cantElementoCesta.setAttribute("max", "")
     cantElementoCesta.innerHTML = producto["cant"]
     subTotalElementoCesta = document.createElement("span")
@@ -182,7 +216,41 @@ function actualizarCesta(){
   }
   labelTotalCesta = document.getElementById("totalCesta")
   labelTotalCesta.innerHTML=totalCesta + "&#8364;"
+
+  this.addEventListener("click", generarEventos) //ejecuto esta funcion aqui por comodidad ya que siempre que se actualiza 
+                                                //hay que generar elementos
 }
+
+
+
+
+
+
+
+//-------------------------VALIDACIONES----------------------
+
+
+function validarFiltrosBusqueda(){
+  tema = $('#fFiltro').val()
+  expReg = /^[0-9a-zA-Z]+$/
+  precioMin = $('#fPrecioMin').val() 
+  precioMax = $('#fPrecioMax').val() 
+  if(!expReg.test(tema)){
+    throw "Solo se admiten letras y numeros en el campo de busqueda..."
+  }
+  if(tema.val().length > 50){
+    throw "Se admiten un maximo de 50 caracteres"
+  }
+  if(precioMin < 0 || precioMax > 10000000){
+    throw "El rango de precios no es posible"
+  }
+  if(precioMin >= precioMax ){
+    throw "El precio minimo no puede ser superior al maximo...vamos piensa un poco..."
+  }
+
+}
+
+
 
 function iniciarSesion(){
   try{
@@ -210,8 +278,15 @@ function iniciarSesion(){
 }
 
 
-function generarCajaProducto(idPadre, idproducto, img, titulo, descripcion, localidad, precio, stock){
-  $('#' + idPadre).append($('<div/>', {
+
+
+//----------------GENERACION DINAMICA DE CAJAS PRODUCTO-----------------
+
+
+
+function generarCajaProducto(clasePadre, idproducto, img, titulo, descripcion, localidad, precio, stock){
+  clasePadre, idproducto, img, titulo, descripcion, localidad, precio, stock
+  $('.' + clasePadre).append($('<div/>', {
     'html' : '',
     'class' : 'producto',
       }).append($('<div/>', {
@@ -221,7 +296,7 @@ function generarCajaProducto(idPadre, idproducto, img, titulo, descripcion, loca
       $('<div/>', {
         'html' : '<h2>' +  titulo + '</h2><span class="localidad">Localidad:' +
         '<b>' + localidad + '</b>' + '</span>' + 
-        '<a id="' + idproducto + '" class="fav"><span>&#9734;</span></a>',
+        '<a id="' + idproducto + '" class="fav"><span>👍</span></a>',
         'class' : 'tituloProducto',
       }),
       $('<div/>', {
@@ -242,6 +317,7 @@ function generarCajaProducto(idPadre, idproducto, img, titulo, descripcion, loca
         'class' : 'botonesProducto',
         }).append($('<button/>', {
           'html' : '&#128722; Añadir a cesta',
+          'id' : idproducto,
           'type' : 'button',
           'class' : 'botonProducto botonCesta'
         }),
@@ -254,3 +330,89 @@ function generarCajaProducto(idPadre, idproducto, img, titulo, descripcion, loca
       )
   )
 }
+
+
+
+
+
+
+
+
+
+
+function generarCajaProductoJSON(clasePadre, productoJSON){
+  idproducto = productoJSON["idproducto"]
+  img = productoJSON["img"]
+  titulo = productoJSON["titulo"]
+  descripcion = productoJSON["descripcion"]
+  localidad = productoJSON["localidad"]
+  precio = productoJSON["precio"]
+  stock = productoJSON["stock"]
+  $('.' + clasePadre).append($('<div/>', {
+    'html' : '',
+    'class' : 'producto',
+      }).append($('<div/>', {
+        'html' : '<img src="' + img + '" alt="fotoProducto"/>',
+        'class' : 'fotoProducto',
+      }),
+      $('<div/>', {
+        'html' : '<h2>' +  titulo + '</h2><span class="localidad">Localidad:' +
+        '<b>' + localidad + '</b>' + '</span>' + 
+        '<a id="' + idproducto + '" class="fav"><span>👍</span></a>',
+        'class' : 'tituloProducto',
+      }),
+      $('<div/>', {
+        'html' : '<p>' + descripcion + '</p>',
+        'class' : 'descripcionProducto',
+      }),
+      $('<div/>', {
+        'html' : '<label><b>Precio: </b>' + precio + '&euro;</label>' +
+        '<label class="stock"><b>Stock: </b>' + stock + '</label>',
+        'class' : 'precioDetalles',
+        }).append($('<button/>', {
+          'html' : 'Detalles &#128270;',
+          'type' : 'button',
+          'class' : 'botonProducto botonDetalles'
+        })
+        ),
+      $('<div/>', {
+        'class' : 'botonesProducto',
+        }).append($('<button/>', {
+          'html' : '&#128722; Añadir a cesta',
+          'id' : idproducto,
+          'type' : 'button',
+          'class' : 'botonProducto botonCesta'
+        }),
+          $('<button/>', {
+            'html' : '&#9993; Contactar',
+            'type' : 'button',
+            'class' : 'botonProducto botonContacto'
+          })
+        )
+      )
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

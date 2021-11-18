@@ -1,7 +1,6 @@
 <?php
 $user="rober";
 $pass="pass";
-//consulta sql para recibir user y pass
     if(isset($_POST["username"]) && isset($_POST["pass"])){
         //consulta sql para recibir user y pass
         $username=$_POST["username"];
