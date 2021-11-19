@@ -9,14 +9,14 @@
     <link href="../css/style.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
-    <script src="../js/js.js"></script>
+    
     
 </head>
 <body>
     <div id="contenedor">
         <?php require_once("header.php"); ?>
     <!--Aqui empieza el contendio-->
-    
+    <div class="contenedorProductos"></div>
     
     
     
@@ -24,5 +24,6 @@
     <!--Aqui acaba el contendio-->
     <?php require_once("footer.php");?>
     </div>
+    <script src="../js/prueva.js"></script>
 </body>
 <html>

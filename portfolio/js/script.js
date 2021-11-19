@@ -1,19 +1,12 @@
-var arrayProductos=[];
+
 window.onload=main()
 function main(){
   try{
-    datosProductos();
-    for(i=0; i < arrayProductos.length; i++){
+    for(i=0; i < 4; i++){
       generarCajaProducto('contenedorProductos', i, 'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://www.elagoradiario.com/wp-content/uploads/2021/05/Lagos-m%C3%A1s-grandes-del-mundo-1140x600.jpg', 'Noche en Lago', 'Pasa una preciosa npche en una cabaña en el lago.', 'Huesca', '70', '2')
     }
     actualizarCesta()
     generarEventos()
-    $(".closebtn").click(function() {
-      closeNav();
-    });
-    $(".openbtn").click(function() {
-        openNav();
-    });
   }
   catch(error){
     alert(error)
@@ -21,28 +14,7 @@ function main(){
   
 }
 
-function openNav() {
-$("#mySidebar").animate({ width: "250px"});
-$("main").animate({marginLeft: "250px"});
-  //document.getElementById("mySidebar").style.width = "250px";
-  //document.getElementsByTagName("main").style.marginLeft = "250px";
-}
 
-function closeNav() {
-$("#mySidebar").animate({width: "0px"});
-$("main").animate({marginLeft: "0px"});
-}
-
-function datosProductos(){
-  $.ajax({
-    type: "post",
-    url: "../php/cogerProductos.php",
-    data: {},
-    })
-    .done(function(data){
-      arrayProductos = JSON.parse(data); // lo convierte a Array
-  }); 
-}
 
 function generarEventos(){
     botonDesplegarCesta=document.getElementById("bCesta");
