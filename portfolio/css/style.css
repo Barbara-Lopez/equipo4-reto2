@@ -34,7 +34,7 @@ header{
 .sidebar {
   height: 100%;
   width: 0;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
@@ -78,7 +78,7 @@ header{
   background-color: #444;
 }
 
-main {
+body {
   transition: margin-left .5s; 
   padding: 20px;
 }
@@ -571,6 +571,10 @@ label{
 
 
 /*---------MEDIA QUERIES-----------*/
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
 
 @media screen and (min-width: 550px) and (max-width: 990px) { 
     footer .footer-items{

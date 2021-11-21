@@ -1,12 +1,12 @@
-window.onload = function() {
+/*window.onload = function() {
     let close=document.getElementsByClassName("closebtn");
     close.addEventListener("click", closeNav);
     let open=document.getElementsByClassName("openbtn");
     open.addEventListener("click", openNav);
 
-  };
+  };*/
 
-/*$( document ).ready(function() {
+$( document ).ready(function() {
     $(".closebtn").click(function() {
         closeNav();
     });
@@ -14,15 +14,15 @@ window.onload = function() {
         openNav();
     });
   
-});*/
+});
 
 
 function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+  $("#mySidebar").animate({width: '250px'});
+  $("body").animate({marginLeft: '250px'});
   }
   
   function closeNav() {
-    document.getElementById("mySidebar").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
+    $("#mySidebar").animate({width: '0px'});
+    $("body").animate({marginLeft: '0px'});
   }

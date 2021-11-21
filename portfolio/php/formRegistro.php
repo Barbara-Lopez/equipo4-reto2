@@ -8,12 +8,15 @@
         <script src="../js/jquery-3.6.0.min.js"></script>
         <script src="../js/objetos.js"></script>
         <script src="../js/verificarFormularios.js"></script>
-        <script src="../js/js.js"></script>
+        <script src="../js/script.js"></script>
+        <script src="../js/sideNav.js"></script>
         <link rel="stylesheet" href="../css/style.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
     </head>
     <body>
-
+        <?php
+            require 'header.php'
+        ?>
         <main>
         <button class="openbtn" >&#11446;</button> 
             <form action="registro.php" method="post" id="formUsuario" enctype="multipart/form-data">
@@ -49,5 +52,8 @@
                 </fieldset>
             </form>
         </main>
+        <?php
+            require 'footer.php'
+        ?>
     </body>
 </html>

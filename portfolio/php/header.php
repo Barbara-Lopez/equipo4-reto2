@@ -23,7 +23,8 @@
         <div id="contenedorSesion">
             <button type="button" id="bRegistro" class="bBonito">Registro</button>
             <button type="button" id="bInicio" class="bBonito">Inicio sesi&oacuten</button>
-        </div>   
+        </div> 
+         
     </header>
     <div id="contenedorLogin" class="hidden">
         <button id="bEnviar" name="bEnviar"><img id="imgEnviar" src="https://www.pngkey.com/png/full/570-5705198_icone-seta-png-icono-flecha.png"></button>
@@ -32,13 +33,13 @@
         <label for="inputPass">Contraseña</label>
         <input type="text" id="inputPass" name="inputPass"/>
     </div>
-
     <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)"  class="closebtn" >x</a>
-      <a href="#">About</a>
-      <a href="#">Services</a>
-      <a href="#">Clients</a>
-      <a href="#">Contact</a>
-    </div>
+        <a href="javascript:void(0)"  class="closebtn" >x</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div> 
+    
     
     
