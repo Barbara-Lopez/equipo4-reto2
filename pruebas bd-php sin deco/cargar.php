@@ -21,7 +21,7 @@ if(isset($_POST["submit"])){
                 // $carpeta_destino=$_SERVER['DOCUMENT_ROOT'].'/carpeta de guardado de archivos/';
                 
                 $carpeta_destino= $_SERVER['DOCUMENT_ROOT'].'/carpetaimagen/';
-                $imgContenido = addslashes(file_get_contents($image));
+                //$imgContenido = addslashes(file_get_contents($image));
 
                 move_uploaded_file($image,$carpeta_destino.$nombre_inagen);
                 
@@ -30,7 +30,7 @@ if(isset($_POST["submit"])){
 
                 
                 //Insertar imagen en la base de datos
-                $insertar = $db->query("INSERT into images_tabla (imagenes, creado) VALUES ('$imgContenido', now())");
+                $insertar = $db->query("INSERT into images_tabla (imagenes, creado) VALUES ('$nombre_inagen', now())");
                 // COndicional para verificar la subida del fichero
                 if($insertar){
                     echo "Archivo Subido Correctamente.";
