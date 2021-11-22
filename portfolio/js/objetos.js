@@ -1,23 +1,23 @@
-function Producto(nombre,descripcion,precio,stock,categoria,foto){
+function Producto(nombre,descripcion,precio,stock,categoria,imagen){
     this.nombre=nombre;
     this.descripcion=descripcion;
     this.precio=precio;
     this.stock=stock;
     this.categoria=categoria;
-    this.foto=foto;
+    this.imagen=imagen;
 }
-function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto){
+function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen){
     this.nombreUsuario=nombreUsuario;
     this.contrasena=contrasena;
     this.nombre=nombre;
     this.correo=correo;
     this.telefono=telefono;
     this.direccion=direccion;
-    this.foto=foto;
+    this.imagen=imagen;
 }
 
-function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto){
-    let user= new Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto);
+function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen){
+    let user= new Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen);
     let persona= {
         "nombreUsuario" : user.nombreUsuario,
         "contrasena" : user.contrasena,
@@ -25,7 +25,7 @@ function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,
         "correo" : user.correo,
         "telefono" : user.telefono,
         "direccion" : user.direccion,
-        "foto" : user.foto,
+        "foto" : user.imagen,
         "formulario" : "usuario"
     };
 
@@ -39,15 +39,15 @@ function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,
     }); 
 }
 
-function crearProducto(nombre,descripcion,precio,stock,categoria,foto){
-    let p= new Producto(nombre,descripcion,precio,stock,categoria,foto);
+function crearProducto(nombre,descripcion,precio,stock,categoria,imagen){
+    let p= new Producto(nombre,descripcion,precio,stock,categoria,imagen);
     let producto= {
         "nombre" : p.nombre,
         "descripcion" : p.descripcion,
         "precio" : p.precio,
         "stock" : p.stock,
         "categoria" : p.categoria,
-        "foto" : p.foto,
+        "foto" : p.imagen,
         "formulario" : "producto"
     };
 

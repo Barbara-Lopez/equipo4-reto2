@@ -11,9 +11,11 @@ require 'conexionBBDD.php';
 
 
 function crearUsuario(){
+    $contrasena=hash("sha256",$_POST["contrasena"]);
+    echo $contrasena;
     $datos= array(
         'nombreUsuario'=> $_POST["nombreUsuario"],
-        'contrasena'=> $_POST["contrasena"],
+        'contrasena'=> $contrasena,
         'nombre'=>$_POST["nombre"],
         'correo'=>$_POST["correo"],
         'telefono'=>$_POST["telefono"],

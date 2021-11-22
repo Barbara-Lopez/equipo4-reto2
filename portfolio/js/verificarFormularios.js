@@ -30,9 +30,10 @@ function verificarDatos(formulrio){
             correo=verificarCorreoElectronico();
             telefono=verificarTelefono();
             direccion=verificarDireccion();
-            foto=$("#foto").files;
-            alert(foto);
-            crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto);
+            foto=$("#foto");
+            imagen=foto[0].files[0]["name"];
+            console.log(imagen)
+            crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen);
             $('.usuario').val("");
             
         } else{
@@ -94,6 +95,7 @@ function verificarContrasena(){
             if(c1==c2){
                 if(reg.test(c1) && reg.test(c2)){
                     return c1;
+                    
                 }
                 else{
                     throw "contrasena4"
