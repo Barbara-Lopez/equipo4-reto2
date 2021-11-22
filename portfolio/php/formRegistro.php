@@ -44,8 +44,8 @@
                         <label for="direccion">Direccion</label>
                         <input type="text" class="usuario" id="direccion" placeholder=" Vitoria,alava">
                         
-                        <label for="foto">Foto</label>
-                        <input type="file" class="usuario" id="foto" accept="image/png,image/jpeg,image/jpg">
+                        <label for="foto[]">Foto</label>
+                        <input type="file" class="usuario" id="foto" name="foto[]"  >
                         
                         <input type="button" value="Enviar" id="enviar" class="boton">
                     </div>

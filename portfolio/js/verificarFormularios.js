@@ -30,7 +30,8 @@ function verificarDatos(formulrio){
             correo=verificarCorreoElectronico();
             telefono=verificarTelefono();
             direccion=verificarDireccion();
-            foto=$('#foto').val();
+            foto=$("#foto").files;
+            alert(foto);
             crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,foto);
             $('.usuario').val("");
             
@@ -51,7 +52,7 @@ function verificarDatos(formulrio){
 
 function verificarNombreUsuario(){
     nombreUsuario=$('#nombreUsuario').val();
-    reg=new RegExp("^[0-9a-zA-Z]*$");
+    reg=new RegExp("^[A-Za-z0-9]*$");
 
     if(nombreUsuario==""){
         throw "nombreUsuario1"
@@ -66,7 +67,7 @@ function verificarNombreUsuario(){
 
 function verificarNombre(){
     nombre=$('#nombre').val();
-    reg=new RegExp("^[0-9a-zA-Z]*$");
+    reg=new RegExp("^[A-Za-z0-9]*$");
 
     if (nombre=="") {
         throw "nombre1"
@@ -121,7 +122,7 @@ function verificarCorreoElectronico(){
 
 function verificarTelefono(){
     telefono=$('#tel').val();
-    reg=new RegExp("^[0-9]{9}$");
+    reg=new RegExp("^[1-9]{1}[0-9]{8}$");
 
     if(telefono==""){
         throw "telefono1";

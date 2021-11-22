@@ -24,7 +24,7 @@ function crearUsuario(){
     $stmt= $dbh->prepare("INSERT INTO usuario (nombreusu,contrasenausu,nombre,gmail,tlfno,direccion) VALUES (:nombreUsuario,:contrasena,:nombre,:correo,:telefono,:direccion)");
     $stmt->execute($datos);
     $dbh=close();
-    
+    enviarImg();
 }
 
 function crearProducto(){
@@ -39,31 +39,29 @@ function crearProducto(){
     $stmt= $dbh->prepare("INSERT INTO producto (titulo,descripcion,precio,stock) VALUES (:nombre,:descripcion,:precio,:stock)");
     $stmt->execute($datos);
     $dbh=close();
-    
+    enviarImg();
 }
 
 function enviarImg(){
-    if(isset($_POST["foto"])){
         
-        foreach ($_FILES['image']['name'] as $key => $value){
-            print_r($_FILES['image']['name'][$key]);
+        foreach ($_FILES['foto']['name'] as $key => $value){
+            print_r($_FILES['foto']['name'][$key]);
        
-            if ( $_FILES['image']['name'][$key]) {
+            if ( $_FILES['foto']['name'][$key]) {
                 
-                $image = $_FILES['image']['tmp_name'][$key]; 
+                $image = $_FILES['foto']['tmp_name'][$key]; 
                 $revisar = getimagesize($image);
                 if($revisar !== false){
-                    $nombre_inagen=$_FILES['image']['name'][$key];
-                    $tipo_inagen = $_FILES['image']['type'][$key];
+                    $nombre_inagen=$_FILES['foto']['name'][$key];
+                    $tipo_inagen = $_FILES['foto']['type'][$key];
                     echo $tipo_inagen;
-                    $tamano_inagen = $_FILES['image']['size'][$key];
+                    $tamano_inagen = $_FILES['foto']['size'][$key];
                     //ruta de la carpeta destino del server
     
                     //$_SERVER['DOCUMENT_ROOT'] ==> /var/www/html (direccion original del localhost del servidor)
                     // $carpeta_destino=$_SERVER['DOCUMENT_ROOT'].'/carpeta de guardado de archivos/';
                     
                     $carpeta_destino= $_SERVER['DOCUMENT_ROOT'].'/imagenes/';
-                    $imgContenido = addslashes(file_get_contents($image));
     
                     move_uploaded_file($image,$carpeta_destino.$nombre_inagen);
                     
@@ -72,7 +70,7 @@ function enviarImg(){
     
                     
                     //Insertar imagen en la base de datos
-                    $insertar = $db->query("INSERT into images_tabla (imagenes, creado) VALUES ('$imgContenido', now())");
+                    $insertar = $db->query("INSERT into imagen (imagenfoto) VALUES ('$nombre_inagen')");
                     // COndicional para verificar la subida del fichero
                     if($insertar){
                         echo "Archivo Subido Correctamente.";
@@ -89,7 +87,7 @@ function enviarImg(){
                 }
             }
         }
-    }
+    
 }
 
     
