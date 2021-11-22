@@ -19,10 +19,8 @@ $( document ).ready(function() {
 
 function openNav() {
   $("#mySidebar").animate({width: '250px'});
-  $("body").animate({marginLeft: '250px'});
   }
   
   function closeNav() {
     $("#mySidebar").animate({width: '0px'});
-    $("body").animate({marginLeft: '0px'});
   }
