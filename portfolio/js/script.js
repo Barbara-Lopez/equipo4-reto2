@@ -6,6 +6,7 @@ function main(){
       generarCajaProducto('contenedorProductos', i, 'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://www.elagoradiario.com/wp-content/uploads/2021/05/Lagos-m%C3%A1s-grandes-del-mundo-1140x600.jpg', 'Noche en Lago', 'Pasa una preciosa npche en una cabaña en el lago.', 'Huesca', '70', '2')
     }
     actualizarCesta()
+    
     generarEventos()
   }
   catch(error){
@@ -44,7 +45,6 @@ function generarEventos(){
       boton.addEventListener("click", actualizarCesta)
     }
   }
-  
 
   
 

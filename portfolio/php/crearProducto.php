@@ -13,15 +13,15 @@
     </head>
     <body>
         <div id="contenedor">
-            <?php require_once("header.php"); ?>
+            <?php require_once("main/header.php"); ?>
         <!--Aqui empieza el contendio-->
         <main>
              
-            <?php require_once("errores/.php"); ?>
+            <?php require_once("main/formProducto.php"); ?>
 
         </main>
         <!--Aqui acaba el contendio-->
-        <?php require_once("footer.php");?>
+        <?php require_once("main/footer.php");?>
         </div>
         <script src="../js/script.js"></script>
     </body>

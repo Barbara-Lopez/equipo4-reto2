@@ -1,6 +1,6 @@
     <header>
         <div id="contenedorIconos">
-            <a href="#" id="icono"><img src="https://cdn-icons-png.flaticon.com/512/92/92026.png"/></a>
+        <button class="openbtn" >&#11446;</button>
             <a id="bCesta"><img src="https://e7.pngegg.com/pngimages/8/373/png-clipart-shopping-bags-trolleys-shopping-cart-logo-online-shop-white-logo.png"/></a>
         </div>
         <div id="contenedorCesta" class="cestaHidden">
@@ -35,9 +35,9 @@
     </div>
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)"  class="closebtn" >x</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
+        <a href="registrarse.php">Registrarse</a>
+        <a href="crearProducto.php">Subir productos</a>
+        <a href="#">Productos</a>
         <a href="#">Contact</a>
     </div> 
     

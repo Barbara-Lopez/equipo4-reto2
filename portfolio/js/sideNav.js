@@ -8,19 +8,12 @@
 
 $( document ).ready(function() {
     $(".closebtn").click(function() {
-        closeNav();
+      $("#mySidebar").animate({width: '0px'});
     });
     $(".openbtn").click(function() {
-        openNav();
+      $("#mySidebar").animate({width: '250px'});
     });
   
 });
 
 
-function openNav() {
-  $("#mySidebar").animate({width: '250px'});
-  }
-  
-  function closeNav() {
-    $("#mySidebar").animate({width: '0px'});
-  }
