@@ -22,7 +22,7 @@
             <input type="text" class="usuario" id="tel" placeholder="655633677">
             
             <label for="direccion">Direccion</label>
-            <input type="text" class="usuario" id="direccion" placeholder=" Vitoria,alava">
+            <input type="text" class="usuario" id="direccion" placeholder=" Vitoria alava">
             
             <label for="foto[]">Foto</label>
             <input type="file" class="usuario" id="foto" name="foto[]"  >
