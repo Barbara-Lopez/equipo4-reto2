@@ -139,7 +139,7 @@ function verificarTelefono(){
 
 function verificarDireccion(){
     direccion=$('#direccion').val();
-    reg=new RegExp("^[a-zA-Z]+,[a-zA-Z]+$");
+    reg=new RegExp("^[a-zA-Z]+ [a-zA-Z]+$");
 
     if(direccion==""){
         throw "direccion1";
