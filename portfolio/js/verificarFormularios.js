@@ -31,8 +31,10 @@ function verificarDatos(formulrio){
             telefono=verificarTelefono();
             direccion=verificarDireccion();
             foto=$("#foto");
-            imagen=foto[0].files[0]["name"];
-            crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen);
+            var formData = new FormData();
+            imagen=foto[0].files[0];
+            formData.append('file',imagen);
+            crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,formData);
             $('.usuario').val("");
             
         } else{

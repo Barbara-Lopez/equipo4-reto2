@@ -1,6 +1,4 @@
 
-var arrayProductos=[];
-
 $(document).ready(
     function (){
         
@@ -11,7 +9,7 @@ $(document).ready(
         })
         .done(function(data){
             
-            arrayProductos = JSON.parse(data); // lo convierte a Array
+            var arrayProductos = JSON.parse(data); // lo convierte a Array
             alert(arrayProductos[0]["direccion"])
             for(i=0; i < arrayProductos.length; i++){
             //generarCajaProductoJSON('contenedorProductos', arrayProductos[i])

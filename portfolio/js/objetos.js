@@ -6,18 +6,18 @@ function Producto(nombre,descripcion,precio,stock,categoria,imagen){
     this.categoria=categoria;
     this.imagen=imagen;
 }
-function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen){
+function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,formData){
     this.nombreUsuario=nombreUsuario;
     this.contrasena=contrasena;
     this.nombre=nombre;
     this.correo=correo;
     this.telefono=telefono;
     this.direccion=direccion;
-    this.imagen=imagen;
+    this.imagen=formData;
 }
 
-function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen){
-    let user= new Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen);
+function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,formData){
+    let user= new Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,formData);
     let persona= {
         "nombreUsuario" : user.nombreUsuario,
         "contrasena" : user.contrasena,
@@ -33,6 +33,8 @@ function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,
         type: "POST",
         url: "enviarFormBaseDatos.php",
         data: persona,
+        contentType: false,
+        processData: false,
     })
     .done(function(){
         alert("Enviado correctamente");
