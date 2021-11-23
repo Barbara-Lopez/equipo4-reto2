@@ -721,11 +721,11 @@ main #foto{
     width: 70%; 
   }
   #error404 div:not(.texto){
-    width: 35%;
+    width: 30%;
     height: 50%;
   }
   #error503 div:not(.texto){
-      width: 40%;
+      width: 35%;
       height: 55%;
   }
   .texto{

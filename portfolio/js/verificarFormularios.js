@@ -32,7 +32,6 @@ function verificarDatos(formulrio){
             direccion=verificarDireccion();
             foto=$("#foto");
             imagen=foto[0].files[0]["name"];
-            console.log(imagen)
             crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen);
             $('.usuario').val("");
             
