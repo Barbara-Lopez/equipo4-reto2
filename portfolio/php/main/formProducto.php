@@ -4,27 +4,38 @@
         <legend>Subir producto</legend>
         <div class="formulario">
             <label for="nombre">Nombre del producto</label>
-            <input type="text" name="producto" id="nombre" placeholder="producto">
+            <input type="text" class="productos" id="nombre" placeholder="producto">
             
             <label for="descripcion">Descripcion</label>
-            <textarea name="producto" id="descripcion" cols="60" rows="20" placeholder="descripción del producto"></textarea>
+            <textarea class="productos" id="descripcion" cols="60" rows="20" placeholder="descripción del producto"></textarea>
             
             <label for="precio">Precio</label>
-            <input type="text" name="producto" id="precio" >
+            <input type="text" class="productos" id="precio" >
             
             <label for="stock">Stock</label>
-            <input type="number" name="producto" id="stock" >
+            <input type="number" class="productos" id="stock" >
             
             <label for="foto">Foto</label>
-            <input type="file" name="producto" id="foto" accept="image/png,image/jpeg,image/jpg">
+            <input type="file" class="productos" id="foto" name="foto[]">
+
+            <label for="localidad">Localidad</label>
+            <select id="localidad"  name="localidad">
+                <option value="vitoria">Vitoria - Gasteiz</option>
+                <option value="amurrio">Amurrio</option>
+                <option value="bernedo">Bernedo</option>
+                <option value="bilbao">Bilbao</option>
+                <option value="abadino">Abadiño</option>
+                <option value="laguardia">Laguardia</option>
+                
+            </select>
             
             <label for="categoria">Categoria</label>
-            <select id="categoria">
+            <select id="categoria" >
                 <option value="electronica">electronica</option>
                 <option value="robotica">robotica</option>
                 <option value="escolar">escolar</option>
             </select>
-            <input type="hidden" name="producto" value="" class="categoria">
+            <input type="hidden" class="productos" value="" id="categorias">
 
             <div>
                 <input type="button" value="Agregar categoria" id="enviarCategoria" class="boton"> 

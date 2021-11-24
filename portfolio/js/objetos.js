@@ -1,23 +1,24 @@
-function Producto(nombre,descripcion,precio,stock,categoria,imagen){
+function Producto(nombre,descripcion,precio,stock,categoria,localidad,imagen){
     this.nombre=nombre;
     this.descripcion=descripcion;
     this.precio=precio;
     this.stock=stock;
     this.categoria=categoria;
+    this.localidad=localidad;
     this.imagen=imagen;
 }
-function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,formData){
+function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen){
     this.nombreUsuario=nombreUsuario;
     this.contrasena=contrasena;
     this.nombre=nombre;
     this.correo=correo;
     this.telefono=telefono;
     this.direccion=direccion;
-    this.imagen=formData;
+    this.imagen=imagen;
 }
 
-function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,formData){
-    let user= new Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,formData);
+function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen){
+    let user= new Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen);
     let persona= {
         "nombreUsuario" : user.nombreUsuario,
         "contrasena" : user.contrasena,
@@ -33,25 +34,25 @@ function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,
         type: "POST",
         url: "enviarFormBaseDatos.php",
         data: persona,
-        contentType: false,
-        processData: false,
     })
     .done(function(){
         alert("Enviado correctamente");
     }); 
 }
 
-function crearProducto(nombre,descripcion,precio,stock,categoria,imagen){
-    let p= new Producto(nombre,descripcion,precio,stock,categoria,imagen);
+function crearProducto(nombre,descripcion,precio,stock,categoria,localidad,imagen){
+    let p= new Producto(nombre,descripcion,precio,stock,categoria,localidad,imagen);
     let producto= {
         "nombre" : p.nombre,
         "descripcion" : p.descripcion,
         "precio" : p.precio,
         "stock" : p.stock,
         "categoria" : p.categoria,
+        "localidad" : p.localidad,
         "foto" : p.imagen,
         "formulario" : "producto"
     };
+    alert(localidad)
 
     $.ajax({
         type: "POST",

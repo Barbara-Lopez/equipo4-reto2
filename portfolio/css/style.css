@@ -46,13 +46,13 @@ header{
   background-color: #356e7a;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 20px ;
 }
 
 .sidebar a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 19px;
   color: white;
   display: block;
   transition: 0.3s;
@@ -630,9 +630,6 @@ main #foto{
     .stock,.localidad{
       display: inherit;
     }
-    main form{
-      width: 100%;
-    }
     main fieldset{
       width: 95%;
     }
@@ -671,9 +668,6 @@ main #foto{
     .stock,.localidad{
       display: inherit;
     }
-    main form{
-      width: 100%;
-    }
     main fieldset{
       width: 90%;
     }
@@ -683,6 +677,8 @@ main #foto{
     main label{
       width: 80%; 
     }
+    .sidebar {padding-top: 60px;}
+    .sidebar a {font-size: 25px ;}
     #error404 div:not(.texto){
       width: 40%;
       height: 50%;
@@ -708,9 +704,7 @@ main #foto{
   .producto{
     margin: 1em;
   }
-  main form{
-    width: 100%;
-  }
+
   main fieldset{
     width: 80%;
   }
@@ -720,6 +714,8 @@ main #foto{
   main label{
     width: 70%; 
   }
+  .sidebar {padding-top: 60px;}
+  .sidebar a {font-size: 25px ;}
   #error404 div:not(.texto){
     width: 30%;
     height: 50%;
