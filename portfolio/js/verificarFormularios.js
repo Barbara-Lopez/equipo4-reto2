@@ -24,17 +24,38 @@ $(document).ready(
 function verificarDatos(formulrio){
     try {
         if(formulrio=="usuario"){
-            nombreUsuario=verificarNombreUsuario();
-            contrasena=verificarContrasena();
-            nombre=verificarNombre();
-            correo=verificarCorreoElectronico();
-            telefono=verificarTelefono();
-            direccion=verificarDireccion();
-            foto=$("#foto");
-            imagen=foto[0].files[0]["name"];
-            crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen);
-            $('.usuario').val("");
-            
+           
+                form_data.append('formulario','usuario')
+                form_data.append('nombreUsuario',verificarNombreUsuario());
+                form_data.append('contrasena',verificarContrasena());
+                form_data.append('nombre',verificarNombre());
+                form_data.append('correo',verificarCorreoElectronico());
+                form_data.append('telefono',verificarTelefono());
+                form_data.append('direccion',verificarDireccion());
+                //crearUsuario(form_data);
+                
+                console.log(form_data);
+                for (var key of form_data.entries()) {
+                    console.log(key[0] + ', ' + key[1]);
+                }
+                $.ajax({
+                    url: "./enviarFormBaseDatos.php",
+                    dataType: 'json',
+                    cache : false,
+                    processData: false,
+                    contentType: false,
+                    data: form_data,
+                    type: "post",
+                    success: function(){
+                        alert("ok");
+                        $('.usuario').val("");
+                    },
+                    complete: function(e){
+                        alert("subido");
+                    }
+                });
+                $('.usuario').val("");
+                
         } else{
             nombre=verificarNombre();
             descripcion=verificarDescripcion(); 
