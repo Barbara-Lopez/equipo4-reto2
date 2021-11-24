@@ -1,6 +1,4 @@
 
-var arrayProductos=[];
-
 $(document).ready(
     function (){
         
@@ -11,10 +9,10 @@ $(document).ready(
         })
         .done(function(data){
             
-            arrayProductos = JSON.parse(data); // lo convierte a Array
+            var arrayProductos = JSON.parse(data); // lo convierte a Array
             alert(arrayProductos[0]["direccion"])
             for(i=0; i < arrayProductos.length; i++){
-          //generarCajaProductoJSON('contenedorProductos', arrayProductos[i])
+            //generarCajaProductoJSON('contenedorProductos', arrayProductos[i])
             generarCajaProducto('contenedorProductos', arrayProductos[i]["idproducto"], arrayProductos[i]["imagenfoto"], arrayProductos[i]["titulo"], arrayProductos[i]["descripcion"],arrayProductos[i]["direccion"], arrayProductos[i]["precio"], arrayProductos[i]["stock"])
             //generarCajaProducto('contenedorProductos', i, 'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://www.elagoradiario.com/wp-content/uploads/2021/05/Lagos-m%C3%A1s-grandes-del-mundo-1140x600.jpg', 'Noche en Lago', 'Pasa una preciosa npche en una cabaña en el lago.', 'Huesca', '70', '2')
 

@@ -33,13 +33,14 @@
         <label for="inputPass">Contraseña</label>
         <input type="text" id="inputPass" name="inputPass"/>
     </div>
-    <div id="mySidebar" class="sidebar">
+    <nav id="mySidebar" class="sidebar">
         <a href="javascript:void(0)"  class="closebtn" >x</a>
+        <a href="">Inicio</a>
         <a href="registrarse.php">Registrarse</a>
         <a href="crearProducto.php">Subir productos</a>
         <a href="#">Productos</a>
         <a href="#">Contact</a>
-    </div> 
+    </nav> 
     
     
     

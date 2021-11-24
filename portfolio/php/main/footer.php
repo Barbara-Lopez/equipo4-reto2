@@ -10,9 +10,10 @@
             <h3>Enlaces</h3>
             <div class="border1"></div> <!--for the underline -->
             <ul>
-                <a href="#"><li>Home</li></a>
-                <a href="./portfolio/login.html"><li>Login</li></a>
-                <a href="./portfolio/contacto.html"><li>Contacto</li></a>
+                <li><a href="">Inicio</a></li>
+                <li><a href="registrarse.php">Registrarse</a></li>
+                <li><a href="crearProducto.php">Subir productos</a></li>
+                <li><a href="#">Productos</a></li>
                 <a href="./portfolio/gestion.html"><li>Gesti&oacute;n</li></a>
             </ul>
         </div>

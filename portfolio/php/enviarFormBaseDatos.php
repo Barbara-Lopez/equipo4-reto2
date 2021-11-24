@@ -50,18 +50,24 @@ function crearUsuarios(){
 }
 
 function crearProducto(){
+    
+    // meter lo necesario para la cookie
+    
+    
     $datos= array(
         'nombre'=>$_POST["nombre"],
         'descripcion'=> $_POST["descripcion"],
         'precio'=>$_POST["precio"],
-        'stock'=>$_POST["stock"]
+        'stock'=>$_POST["stock"],
+        'localidad'=>$_POST["localidad"],
+        'idUsuario'=>1
     );
-        
+    
     $dbh=connect();
-    $stmt= $dbh->prepare("INSERT INTO producto (titulo,descripcion,precio,stock) VALUES (:nombre,:descripcion,:precio,:stock)");
+    $stmt= $dbh->prepare("INSERT INTO producto (titulo,descripcion,precio,stock,localidad,usuariosubido) VALUES (:nombre,:descripcion,:precio,:stock,:localidad,:idUsuario)");
     $stmt->execute($datos);
     $dbh=close();
-    enviarImg();
+    //enviarImg();
 }
 
 function enviarImg(){

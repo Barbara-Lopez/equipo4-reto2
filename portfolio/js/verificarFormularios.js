@@ -13,8 +13,8 @@ $(document).ready(
                 guardarCategoria();
             });
             $('#eliminarCategoria').click(function(event){
-                $('.categoria').val("");
-                if( $('.categoria').val()==""){
+                $('#categorias').val("");
+                if( $('#categorias').val()==""){
                     $('#eliminarCategoria').notify("Categoria eliminada",{position: "right",className: "none" });
                 } 
             });
@@ -32,19 +32,21 @@ function verificarDatos(formulrio){
             direccion=verificarDireccion();
             foto=$("#foto");
             imagen=foto[0].files[0]["name"];
-            console.log(imagen)
             crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen);
             $('.usuario').val("");
             
         } else{
             nombre=verificarNombre();
-            descripcion=verificarDescripcion();
+            descripcion=verificarDescripcion(); 
             precio=verificarPrecio();
             stock=verificarStock();
             foto=verificarFoto();
-            categoria=verificarCategoria();      
-            crearProducto(nombre,descripcion,precio,stock,categoria,foto);
-            $('.producto').val("");
+            imagen=foto[0].files[0]["name"];
+            localidad= $("#localidad").val();
+            console.log(localidad)
+            categoria=verificarCategoria();
+            crearProducto(nombre,descripcion,precio,stock,categoria,localidad,imagen);
+            $('.productos').val("");
         }
     } catch (error) {
         errores(error);
@@ -140,7 +142,7 @@ function verificarTelefono(){
 
 function verificarDireccion(){
     direccion=$('#direccion').val();
-    reg=new RegExp("^[a-zA-Z]+,[a-zA-Z]+$");
+    reg=new RegExp("^[a-zA-Z]+ [a-zA-Z]+$");
 
     if(direccion==""){
         throw "direccion1";
@@ -179,8 +181,8 @@ function verificarDescripcion(){
 } 
 
 function verificarFoto(){
-    foto=$('#foto').val();
-    if(foto==""){
+    foto=$('#foto');
+    if(foto.val()==""){
         throw "foto";
         
     }else{
@@ -198,9 +200,9 @@ function verificarStock(){
 } 
 
 function verificarCategoria(){
-    categoria=$('.categoria').val();
+    categoria=$('#categorias').val();
     if(categoria==""){
-        categorias=["otros"];
+        categorias="otros";
         return categorias;
     }else{
         categorias=categoria.split(',');
@@ -211,7 +213,7 @@ function verificarCategoria(){
 function guardarCategoria(){
     let categoria =$("#categoria option:selected").val();
 
-    let hidden=$('.categoria');
+    let hidden=$('#categorias');
         if(hidden.val()==""){
             hidden.val(categoria);
         } 

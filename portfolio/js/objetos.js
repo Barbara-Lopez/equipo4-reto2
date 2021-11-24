@@ -1,9 +1,10 @@
-function Producto(nombre,descripcion,precio,stock,categoria,imagen){
+function Producto(nombre,descripcion,precio,stock,categoria,localidad,imagen){
     this.nombre=nombre;
     this.descripcion=descripcion;
     this.precio=precio;
     this.stock=stock;
     this.categoria=categoria;
+    this.localidad=localidad;
     this.imagen=imagen;
 }
 function Usuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,imagen){
@@ -39,17 +40,19 @@ function crearUsuario(nombreUsuario,contrasena,nombre,correo,telefono,direccion,
     }); 
 }
 
-function crearProducto(nombre,descripcion,precio,stock,categoria,imagen){
-    let p= new Producto(nombre,descripcion,precio,stock,categoria,imagen);
+function crearProducto(nombre,descripcion,precio,stock,categoria,localidad,imagen){
+    let p= new Producto(nombre,descripcion,precio,stock,categoria,localidad,imagen);
     let producto= {
         "nombre" : p.nombre,
         "descripcion" : p.descripcion,
         "precio" : p.precio,
         "stock" : p.stock,
         "categoria" : p.categoria,
+        "localidad" : p.localidad,
         "foto" : p.imagen,
         "formulario" : "producto"
     };
+    alert(localidad)
 
     $.ajax({
         type: "POST",
