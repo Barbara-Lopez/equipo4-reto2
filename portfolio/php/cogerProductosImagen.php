@@ -2,7 +2,7 @@
 require 'conexionBBDD.php';
 
 $dbh=connect();
-$stmt= $dbh->prepare("SELECT p.*, i.imagenfoto, u.direccion FROM producto p, imagen i, usuario u where i.usuario_idusu=p.idproducto and i.usuario_idusu=u.idusu");
+$stmt= $dbh->prepare("SELECT p.*, i.imagenfotoFROM producto p, imagen i where i.usuario_idusu=p.idproducto ");
 $stmt->execute();
 $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $dbh=close();
