@@ -41,21 +41,15 @@ while IFS=';'
 do
 read usuario clave
 
-	if cat /etc/passwd|grep $usuario; then
-		echo "El usuario ya existe"
-	else
 	
 	if cat /etc/passwd|grep $usuario; then
 		echo "El usuario trebureus ya existe"
 	else
 		echo $usuario
 		echo $clave
-		pass=$(mkpasswd -m sha-512 $clave)
 		echo "Creando usuario trebureus"
-		sudo useradd -m -d /var/www/html/"$usuario".com -s /bin/false -p $pass $usuario
-		sudo chown -R $usuario:$usuario /var/www/html/$dominio
+		sudo useradd -m -d /var/www/publica/$usuario -s /bin/false -p $pass $usuario
 	sudo echo $usuario >> /etc/vsftpd.userlist
-	fi
 	fi
 done < $fusuario
 echo "Reiniciando servicio FTP"
