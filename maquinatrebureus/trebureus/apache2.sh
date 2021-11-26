@@ -47,7 +47,6 @@ fi
 				sudo sed -i s,'error.log',"errorpublica.log",g /etc/apache2/sites-available/publica.conf
 				sudo sed -i s,'access.log',"accesspublica.log",g /etc/apache2/sites-available/publica.conf
 
-		ErrorDocument 404 /error_html/HTTP_NOT_FOUND.html
 	#Habilitar los sitios 
 	echo "Habilitar los sitios web"
 		sudo a2ensite publica

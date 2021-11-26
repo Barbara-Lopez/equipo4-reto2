@@ -11,7 +11,7 @@ sed -i "s/dhcp4: yes/dhcp4: no/g" /etc/netplan/00-installer-config.yaml
 # obtenemos la informacion NIC (centro de informacion de red)
 echo $2
 # metemos la ip que queremos poner de statico
-mimac=cat /sys/class/net/enp0s3/address
+mimac=sudo cat /sys/class/net/enp0s3/address
 echo
 cat > /etc/netplan/00-installer-config.yaml <<EOF
 network:
