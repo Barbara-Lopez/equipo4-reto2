@@ -27,14 +27,7 @@ fi
 
 	#Copiar las paginas web
 		echo "Creamos las paginas web"
-		sudo echo "<html>
-						<head>
-							<title>Publica</title>
-						</head>
-						<body>
-							<h1>Estas en la pagina publica</h1>
-						</body>
-					</html>" >/var/www/publica/public_html/index.php
+		sudo cp /vagrant/retotrebureus/* /var/www/publica/
 
 	#Copiar los ficheros de configuración
 	echo "Copiar fichero de configuración del defecto"
@@ -46,15 +39,15 @@ fi
 			echo "publica.conf"
 				sudo sed -i s,'</VirtualHost>',"ServerName www.trebureus.com",g /etc/apache2/sites-available/publica.conf
 				sudo echo "ServerAlias publica.trebureus.com" /etc/apache2/sites-available/publica.conf
+				sudo echo "ErrorDocument 404 /trebur/error404.php"\" >> /etc/apache2/sites-available/publica.conf
+				sudo echo "ErrorDocument 503 /trebur/error503.php"\" >> /etc/apache2/sites-available/publica.conf
 				sudo echo "</VirtualHost>" >> /etc/apache2/sites-available/publica.conf
 				sudo sed -i s,'miadmin@localhost',"control@trebureus.com",g /etc/apache2/sites-available/publica.conf
 				sudo sed -i s,'html',"publica/public_html",g /etc/apache2/sites-available/publica.conf
 				sudo sed -i s,'error.log',"errorpublica.log",g /etc/apache2/sites-available/publica.conf
 				sudo sed -i s,'access.log',"accesspublica.log",g /etc/apache2/sites-available/publica.conf
-				sudo echo "ErrorDocument 404 \"El recurso de trebureus al que intenta acceder no existe"\" >> /etc/apache2/sites-available/publica.conf
-				sudo echo "ErrorDocument 503 \"Servicio No Disponible"\" >> /etc/apache2/sites-available/publica.conf
 
-		
+		ErrorDocument 404 /error_html/HTTP_NOT_FOUND.html
 	#Habilitar los sitios 
 	echo "Habilitar los sitios web"
 		sudo a2ensite publica

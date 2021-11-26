@@ -11,8 +11,6 @@ source /vagrant/trebureus/apache2.sh
 source /vagrant/trebureus/php.sh
 #script de implementacion de ip statica
 source /vagrant/trebureus/ipstatica.sh
-#script de creacion del servidor ftp
-source /vagrant/trebureus/ftp.sh
 
 # instalacion del pgp-xdebug
 # Change AllowOverride from None to All (between line 170 and 174)
@@ -31,6 +29,9 @@ composer self-update
 rm -rf /var/www
 mkdir /var/www
 ln -s /vagrant/ /var/www/html
+
+#script de creacion del servidor ftp
+source /vagrant/trebureus/ftp.sh
 
 
 

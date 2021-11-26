@@ -46,7 +46,6 @@ read usuario clave
 	else
 	
 	if cat /etc/passwd|grep $usuario; then
-	do
 		echo "El usuario trebureus ya existe"
 	else
 		echo $usuario
