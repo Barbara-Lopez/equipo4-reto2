@@ -36,7 +36,7 @@ else
 fi
 #Encriptación de clave
 #Creación de usuario 
-fusuario=/vagrant/usuarios.csv
+fusuario=/vagrant/trebureus/usuarios.csv
 while IFS=';'
 do
 read usuario clave
