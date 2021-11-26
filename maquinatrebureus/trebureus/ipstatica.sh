@@ -9,18 +9,14 @@ cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.b
 #cambia la dhcp de 'yes' to 'no'
 sed -i "s/dhcp4: yes/dhcp4: no/g" /etc/netplan/00-installer-config.yaml
 # obtenemos la informacion NIC (centro de informacion de red)
-echo $2
-# metemos la ip que queremos poner de statico
 mimac=sudo cat /sys/class/net/enp0s3/address
-echo
+# metemos la mac personalizada en el dhcp
+echo $mimac
 cat > /etc/netplan/00-installer-config.yaml <<EOF
 network:
     ethernets:
         enp0s3:
             dhcp4: true
-            match:
-                macaddress: $mimac
-            set-name: enp0s3
     version: 2
 EOF
 sudo netplan apply

@@ -26,7 +26,7 @@ fi
 		sudo mkdir -p /var/www/publica/public_html
 
 	#Copiar las paginas web
-		echo "Creamos las paginas web"
+		echo "Creamos las paginas web desde una carpeta remota"
 		sudo cp /vagrant/retotrebureus/* /var/www/publica/
 
 	#Copiar los ficheros de configuración
