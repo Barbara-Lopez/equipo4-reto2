@@ -47,9 +47,10 @@ do
 		echo $clave
 		pass=$(mkpasswd -m sha-512 $clave)
 		echo "Creando usuario trebureus"
-		sudo useradd -p $pass $usuario
+		sudo useradd -m -d /var/www/html/"$usuario".com -s /bin/false -p $pass $usuario
+		sudo chown -R $usuario:$usuario /var/www/html/$dominio
 	sudo echo $usuario >> /etc/vsftpd.userlist
-	fi
+		fi
 done < $fusuario
 echo "Reiniciando servicio FTP"
 sudo systemctl restart vsftpd
