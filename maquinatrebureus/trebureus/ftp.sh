@@ -37,18 +37,17 @@ fi
 #Encriptación de clave
 #Creación de usuario 
 fusuario=/vagrant/trebureus/usuarios.csv
-while IFS=';'
+while IFS=';' read usuario clave
 do
-read usuario clave
-
 	
 	if cat /etc/passwd|grep $usuario; then
 		echo "El usuario trebureus ya existe"
 	else
 		echo $usuario
 		echo $clave
+		pass=$(mkpasswd -m sha-512 $clave)
 		echo "Creando usuario trebureus"
-		sudo useradd -m -d /var/www/publica/$usuario -s /bin/false -p $pass $usuario
+		sudo useradd -p $pass $usuario
 	sudo echo $usuario >> /etc/vsftpd.userlist
 	fi
 done < $fusuario
