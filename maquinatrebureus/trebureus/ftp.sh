@@ -56,6 +56,7 @@ read usuario clave
 		sudo chown -R $usuario:$usuario /var/www/html/$dominio
 	sudo echo $usuario >> /etc/vsftpd.userlist
 	fi
+	fi
 done < $fusuario
 echo "Reiniciando servicio FTP"
 sudo systemctl restart vsftpd
