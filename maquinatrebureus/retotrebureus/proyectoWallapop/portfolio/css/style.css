@@ -1,0 +1,898 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    width: 100%;
+    background-color: rgba(96, 201, 224, 0.2); 
+    /*.Proyecto-tienda-5-rgba { color: rgba(96, 201, 224, 1); }*/
+    transition: margin-left .5s; 
+  }
+  #contenedor{
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    overflow-x:hidden;
+  }
+  main{
+    width: 100%;
+  }
+/****** HEADER ********/
+header{
+  position: relative;
+  width: 100%;
+  background-color: #50A7BA;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  
+}
+/****** Side Nav ********/
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3000;
+  top: 0;
+  left: 0;
+  background-color: #356e7a;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 20px ;
+  transition: margin-left .5s; 
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 19px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #6be0fa;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #356e7a;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #6be0fa;
+}
+/*******BARRA BUSCADOR****/
+header #contenedorIconos{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+header #icono {
+  filter: brightness(1.1);
+  blend-mode: multiply;
+  margin: 0.5em;
+  height: 0;
+}
+header a img {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+}
+header #bCesta {
+  filter: brightness(1.1);
+  blend-mode: multiply;
+  width: 2em;
+  height: 0;
+}
+
+header #barraBuscador{
+  width: 85vw; 
+  max-width: 600px;
+  margin: 1em;
+  display: flex;
+}
+header #inputBuscador{
+  width: 100%;
+  height: 1.5em;
+  border-radius : 1em;
+  font-size: 25px;
+  text-align: center;
+}
+header #bBuscar{
+  height: 1.5em;
+  position: relative;
+  right: 1.5em;
+  border-radius: 1em;
+  font-size: 25px;
+}
+header #bBuscar #buscarIcon {
+  width: 1.5em;
+}
+
+/* botones registro y login */
+header #contenedorSesion{
+  width: 20vw;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-right: 0.75em
+}
+
+header #contenedorSesion button {
+  margin: 0.5em;
+}
+
+#contenedorLogin {
+  position: relative;
+  width: 98vw;
+  max-width: 550px;
+  margin: 0 auto;
+  height: 20vh;
+  min-height: 200px;
+  background: rgb(199,232,208);
+  background: linear-gradient(326deg, rgba(199,232,208,0.46367310725552047) 0%, rgba(27,177,200,0.70) 45%);
+  padding: .75em;
+  border-radius: 0 0 1em 1em;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  transition: all 1s ease 0s;
+  top: -450px;
+  z-index: 1000;
+  box-shadow: 0.5em 0.5em 0.3em 0.2em grey;
+}
+.nohidden{
+  top: 0 !important;
+}
+.hidden{
+  height: 1px !important;
+  min-height: 0px !important;
+}
+#contenedorLogin  input, #contenedorLogin label{
+  text-align: center;
+  border-radius: 5px;
+  width: 400px;
+  margin: 0.5em;
+}
+
+#contenedorLogin #bEnviar,#contenedorLogin img {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  transition: all 0.3s ease 0s;
+  align-self: flex-end;
+}
+#contenedorLogin img:hover{
+  width: 35px;
+  height: 35px;
+}
+#contenedorLogin img:active{
+  opacity: 0.6;
+}
+#contenedorLogin input{
+  width: 90%;
+}
+
+
+/* Pie de pagina */
+footer {
+    float: left;
+    clear: both;
+    width: 100%;
+    /*background: rgb(1,40,10);
+    background: linear-gradient(278deg, rgba(1,40,10,0.8309698879551821) 0%, rgba(32,185,16,0.7777485994397759) 50%, rgba(37,105,61,0.8309698879551821) 100%);*/
+    display: block;
+    transition: all 1s ease;
+ }
+
+ .contenido-footer {
+     width: 95%;
+     margin: auto;
+     padding: 2em 1em;
+     display: flex;
+     flex-wrap: wrap;
+     box-sizing: border-box;
+     justify-content: center;
+ }
+
+.footer-items {
+    width: calc(100%/3);
+    min-width: 300px;
+    padding: 1em 2em;
+    box-sizing: border-box;
+}
+
+.footer-items p {
+    font-size: 1em;
+    text-align: justify;
+    line-height: 1.5em;
+}
+
+.footer-items h1 {
+}
+
+.border1 {
+    height: 3px;
+    width: 3em;
+    background: #ff9800;
+    color: #ff9800;
+    background-color: #ff9800;
+    border: 0px;
+}
+footer .footer-items{
+        width: 100%;
+    }
+.footer-items ul {
+    padding-left: 0.5em;
+    list-style: none;
+    font-size: 1em;
+    letter-spacing: 0.5px;  
+ }
+
+.footer-items ul a {
+    text-decoration: none;
+    color: black;
+    outline: none;
+    transition: 0.3s;
+}
+
+.footer-items ul a:hover {
+    color: grey;
+}
+
+.footer-items ul li {
+    margin: 0.5em 0;
+    height: 2em;
+}
+
+.footer-items li i {
+    margin-right: 2em;
+}
+
+.footer-bottom {
+  width: 100%;
+    padding: 1em;
+    font-size: 12px;
+    text-align: center;
+}
+
+/*estilo cajas producto*/
+.contenedorProductos{
+  width: 100vw;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+#formFiltroProductos{
+  width: 100%;
+  max-width: 1100px;
+  padding: 1em;
+  border-radius: 10px;
+}
+#formFiltroProductos form{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+#formFiltroProductos form input{
+  border-radius: 5px;
+}
+#formFiltroProductos form *{
+  margin-bottom: 0.5em;
+}
+#formFiltroProductos form #fFiltro{
+  width: 100%;
+  height: 23px;
+}
+#formFiltroProductos #divFCategoria,#divFLocalidad{
+  width: 50%;
+}
+#divFCategoria *, #divFLocalidad *{
+  width: 50%;
+}
+#divFPrecioMin, #divFPrecioMax {
+  width: 50%;
+}
+#divFPrecioMin label,#divFPrecioMax label{
+  width: 30%;
+}
+#divFPrecioMax input[type="range"], #divFPrecioMin input[type="range"]{
+  width: 70%;
+}
+#formFiltroProductos > #fSubmit{
+  width: 20%;
+  max-width: 120px;
+}
+.producto{
+  margin: 0.5em;
+  width: 100%;
+  max-width: 700px;
+  height: 250px;
+  padding: 0em;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  border-top: 2px solid whitesmoke;
+  border-bottom: 2px solid whitesmoke;
+  padding: 0.5em;
+  background-color: rgba(164, 203, 169, 0.3);
+  border-radius: 10px;
+  justify-self: center;
+}
+.fotoProducto{
+  width: 30%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.fotoProducto img{
+  width: 100%;
+  height: 100%;
+  margin: 0.3em;
+}
+.tituloProducto{
+  width: 70%;
+  height: 20%;
+  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+  border-bottom: 2px solid whitesmoke;
+}
+.localidad{
+  padding-left: 1em;;
+  display: none;
+}
+.localidad > b{
+  padding-left: 1em;;
+}
+.fav{
+  color: maroon;
+  font-size: 20px;
+}
+.fav:hover{
+  font-size: 25px;
+  color: green;
+}
+.fav::before{
+  content: \2661;
+}
+.descripcionProducto{
+  width: 70%;
+  height: 50%;
+  padding: 0.75em;
+}
+.descripcionProducto label {
+  margin: 10px 0;
+}
+.precioDetalles{
+  height: 15%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 2px solid whitesmoke;
+}
+.stock{
+  display: none;
+}
+.botonesProducto{
+  width: 70%;
+  height: 15%;
+  padding: 0.5em;
+  border-top: 2px solid whitesmoke;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.botonesProducto .botonProducto{
+  width: 35%;
+  margin: 0 1em;
+}
+.botonProducto{
+  background: #333;
+  color: #ccc;
+  width: 25%;
+  height: 25px;
+  border: 0;
+  font-size: 15px;
+  border-radius: 4px;
+  font-family: 'Arial', sans-serif;
+  transition: .6s;
+  overflow: hidden;
+}
+
+
+
+/*-------------------------------ESTILOS DESTALLES PRODUCTO-------------------------*/
+#detallesProducto{
+  width: 85%;
+  max-width: 750px;
+  margin: 0 auto;
+  background-color: greenyellow;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+.nombreLocalidadFav{
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+}
+.nombreLocalidadFav > div *{
+  margin: 0.2em;
+}
+.nombreLocalidadFav > div  #dUsuario{
+  font-size: 20px;
+  font-weight: 600;
+}
+.nombreLocalidadFav .fav{
+  margin-right: 7%;
+}
+.imagenesProducto{
+
+  width: 100%;
+  height: 80vw;
+  max-width: 750px;
+  max-height: 750px;
+}
+.imagenesProducto img{
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+.dPrecioTituloCat{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+.dPrecioTituloCat  > * {
+  display: inline-block;
+  margin: 0.2em 1em;
+}
+.dPrecioTituloCat #dCategoria {
+  align-self: flex-end;
+  padding: 0.3em;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+.dDescProducto{
+  padding: 0.4em 0.8em;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------------Estilos relacionados con cesta--------------------------------*/
+#contenedorCesta{
+  width: 100vw; /*cambiar para mobile first*/
+  max-width: 450px;
+  padding-right: 100px;/*no funciona el padding*/
+  height: 350px;
+  position: absolute;
+  background-color: rgba(53, 110, 122,1);
+  top: 2.5em;
+  transition: all 0.5s ease-out 0s;
+  z-index: 3000;
+  border-radius: 15px 0 0 15px;
+  padding: 1em;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.cestaHidden{
+  left: 130%;
+}
+.cestaNoHidden{
+  left: calc(100% - 450px) !important;
+}
+.tituloCesta{
+  margin: 0.2em 0 0.5em 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  border-bottom: 2px solid whitesmoke;
+  padding-right: 10%;
+}
+#contenedorItemsCesta{
+  height: 75%;
+  background-color: whitesmoke;
+  overflow-y: scroll;
+  border-radius: 5px;
+  margin: 0.5em 0 0.5em 0;
+}
+.itemCesta{
+  list-style: none;
+  margin: 0.2em;
+  padding: 0.2em;
+  border-bottom: 1px solid whitesmoke;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 2px solid lightgrey;
+}
+.itemCesta input{
+  text-align: center;
+  border-radius: 10px;
+  width: 40px;
+}
+.itemCesta .bBorrarProductoCesta{
+  font-size: 20px;
+  transition: all 0.3s ease 0;
+  transform: translateY(-3px);
+}
+.itemCesta .bBorrarProductoCesta:hover{
+  transform: translateY(-7px)
+    rotate(15deg);
+}
+.totalCesta{
+  border-top: 2px solid whitesmoke;
+  margin: 0.2em 0.5em;
+  padding: 0.2em;
+}
+#bComprarCesta{
+  width: 90%;
+  height: 10%;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+
+
+
+/* --------------------------------------clases esteticas para diferentes elementos*--------------------*/
+/* estetica de los formularios */
+main form{
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+  align-content: center;
+}
+main fieldset{
+  width: 100%;
+  margin: 0 1em;
+  background-color: rgba(133, 172, 180, 0.2);  
+  border-radius: 1em;
+}
+
+main .formulario{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 1em;
+  padding: 1.5em;
+}
+main legend{
+  margin-left: 2em;
+}
+main input:not(.boton), main textarea, main select{
+  width: 100%;
+  margin: .3em 0 ;
+  padding: 1em 0em 1em 1em;
+  border-radius: .5em;
+  border: 1px solid lightgray;
+}
+main label{
+  width: 100%; 
+  margin-top: 1em;
+}
+main .boton{
+  margin: .5em;
+  padding: .5em;
+}
+main #foto{
+  border: none;
+}
+
+
+.bBonito {
+  width: 8vw;
+  min-width: 10em;
+  height: 5vh;
+  min-height: 2em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+
+.bBonito:hover {
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+.pulsado{
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+/* Tamaño del scroll */
+#contenedorItemsCesta::-webkit-scrollbar {
+  width: 8px;
+}
+
+ /* Estilos barra (thumb) de scroll */
+#contenedorItemsCesta::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 4px;
+}
+
+#contenedorItemsCesta::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+#contenedorItemsCesta::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+ /* Estilos track de scroll */
+#contenedorItemsCesta::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
+}
+
+#contenedorItemsCesta::-webkit-scrollbar-track:hover, 
+#contenedorItemsCesta::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+}
+/*---------Titulo Productos---------*/
+.tituloProductos {
+  text-align: center;
+  width: 50%;
+  text-align: left; 
+  font-family: Arial Black; 
+  font-weight: bold; font-size: 30px; 
+  background: #202020; 
+  -webkit-background-clip: text; 
+  -moz-background-clip: text; 
+  background-clip: text; 
+  color: transparent; 
+  text-shadow: 0px 3px 3px rgba(255,255,255,0.4),0px -1px 1px rgba(0,0,0,0.3);
+  border-bottom: 2px solid orangered;
+  border-top: 2px solid orangered;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  margin: 1em;
+  }
+  
+
+/*------------------clases para ocultar o mostrar elementos segun haya login o no---------------------*/
+
+.hiddenLogin{
+  display: none !important; 
+}
+.noHiddenLogin{
+  display: none !important;
+}
+
+
+/* --------------------------Errores 404 y 503 -----------------------------*/
+
+.texto{
+  font-size: 15px;
+}
+#error404{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+#error404 div:not(.texto){
+  width: 50%;
+  height: 50%;
+}
+#error404 h1 {
+  background-color: crimson;
+  font-size: 150px;
+  margin-right: .1em;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 5px 10px 8px black;
+}
+
+#error503{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+#error503 div:not(.texto){
+  width: 40%;
+  height: 55%;
+}
+
+#error503 h1 {
+  background-color: orange;
+  font-size: 100px;  
+  margin-right: .2em;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 5px 10px 8px black;
+}
+
+
+
+/*---------MEDIA QUERIES-----------*/
+
+@media screen and (min-width: 550px) and (max-width: 990px) {
+  #cestaNoHidden{
+    left: calc(100vw - 450px)!important; 
+  }
+    footer .footer-items{
+        width: 45%;
+    }
+    .stock,.localidad{
+      display: inherit;
+    }
+    main fieldset{
+      width: 95%;
+    }
+    main input:not(.boton), main textarea, main select{
+      width: 85%;
+    }
+    main label{
+      width: 85%; 
+    }
+    #error404 div:not(.texto){
+      width: 50%;
+      height: 50%;
+    }
+    #error503 div:not(.texto){
+        width: 70%;
+        height: 55%;
+    }
+    .texto{
+        font-size: 20px;
+    }
+    #error404 h1 {
+        font-size: 250px;
+    }
+    #error503 h1 {
+        font-size: 200px;  
+    }
+}
+@media screen and (min-width: 900px){ 
+  #cestaNoHidden{
+    left: calc(100vw - 450px)!important; 
+  }
+    footer .footer-items{
+      width: 30%;
+    }
+    .producto{
+      max-width: 750px;
+    }
+    .stock,.localidad{
+      display: inherit;
+    }
+    main fieldset{
+      width: 90%;
+    }
+    main input:not(.boton), main textarea, main select{
+      width: 80%;
+    }
+    main label{
+      width: 80%; 
+    }
+    .sidebar {padding-top: 60px;}
+    .sidebar a {font-size: 25px ;}
+    #error404 div:not(.texto){
+      width: 40%;
+      height: 50%;
+    }
+    #error503 div:not(.texto){
+        width: 40%;
+        height: 55%;
+    }
+    .texto{
+        font-size: 25px;
+    }
+    #error404 h1 {
+        font-size: 400px;
+    }
+    #error503 h1 {
+        font-size: 300px;  
+    }
+}
+@media screen and (min-width: 1500px){
+  #cestaNoHidden{
+    left: calc(100vw - 450px) !important; 
+  }
+  #contenedorProductos{
+    width: 90%;
+  }
+  main fieldset{
+    width: 80%;
+  }
+  main input:not(.boton), main textarea, main select{
+    width: 70%;
+  }
+  main label{
+    width: 70%; 
+  }
+  .sidebar {padding-top: 60px;}
+  .sidebar a {font-size: 25px ;}
+  #error404 div:not(.texto){
+    width: 30%;
+    height: 50%;
+  }
+  #error503 div:not(.texto){
+      width: 35%;
+      height: 55%;
+  }
+  .texto{
+      font-size: 30px;
+  }
+  #error404 h1 {
+      font-size: 500px;
+  }
+  #error503 h1 {
+      font-size: 400px;  
+  }
+  
+}
+
+
+  

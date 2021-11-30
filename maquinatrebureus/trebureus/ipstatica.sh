@@ -2,23 +2,24 @@
 #ipstatica.sh
 #Autor: trebureus
 #creacion de todo el contenido de los servidores //apache2/ssh/ftp/base de datos//
-#PT0 ==>creacion de io statica
+#PT0 ==>creacion de ip statica
 #Instalación del ip
 #creacion de la copia del ip
-cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bk_`date +%Y%m%d%H%M`
-#cambia la dhcp de 'yes' to 'no'
-sed -i "s/dhcp4: yes/dhcp4: no/g" /etc/netplan/00-installer-config.yaml
-# obtenemos la informacion NIC (centro de informacion de red)
-mimac=sudo cat /sys/class/net/enp0s3/address
-# metemos la mac personalizada en el dhcp
-echo $mimac
-cat > /etc/netplan/00-installer-config.yaml <<EOF
+cp /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bk_`date +%Y%m%d%H%M`
+cp /etc/netplan/50-cloud-init.yaml /etc/netplan/51-cloud-init.yaml
+cat > /etc/netplan/51-cloud-init.yaml <<EOF
 network:
+    renderer: networkd
     ethernets:
-        enp0s3:
-            dhcp4: true
+        enp0s8:
+            dhcp4: no
+            addresses: [172.20.224.112/16]
+            gateway4: 172.20.1.2
+            nameservers:
+              addresses: [172.20.224.100,172.20.223.100]
     version: 2
 EOF
+rm /etc/netplan/50-vagrant.yaml
 sudo netplan apply
 echo "==========================="
 echo

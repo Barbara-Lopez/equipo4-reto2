@@ -29,7 +29,7 @@ sudo useradd -M -G treburgrup -p $CONTRAS trebureus
 
 #Configuración SSH
 echo "Configurando SSH ...."
-echo "Port 7777
+echo "Port 8642
 PermitRootLogin no
 LoginGraceTime 30
 MaxAuthTries 2

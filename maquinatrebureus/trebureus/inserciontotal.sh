@@ -14,15 +14,7 @@ ln -s /vagrant/ /var/www/prueba
 source /vagrant/trebureus/apache2.sh
 #script de implementacion del php
 source /vagrant/trebureus/php.sh
-#script de implementacion de ip statica
-source /vagrant/trebureus/ipstatica.sh
 
-# instalacion del pgp-xdebug
-# Change AllowOverride from None to All (between line 170 and 174)
-sed -i '170,174 s/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
-
-#script de creacion del servidor  de base de datos
-source /vagrant/trebureus/basedatos.sh
 # Instalar composer
 cd ~
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -30,10 +22,18 @@ php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 php -r "unlink('composer-setup.php');"
 composer self-update
 
+# instalacion del pgp-xdebug
+# Change AllowOverride from None to All (between line 170 and 174)
+sed -i '170,174 s/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+
+#script de creacion del servidor  de base de datos
+source /vagrant/trebureus/basedatos.sh
 
 #script de creacion del servidor ftp
 source /vagrant/trebureus/ftp.sh
 
+#script de implementacion de ip statica
+source /vagrant/trebureus/ipstatica.sh
 
 
 
